@@ -88,11 +88,13 @@
       const num = String(i + 1).padStart(2, "0");
       const colore = coloriEtichette[i % coloriEtichette.length];
       const meta = [p.cliente, p.anno].filter(Boolean).map(formatta).join(" · ");
+      const apribile = (p.galleria || []).length > 0;
       return `
       <article class="progetto progetto--${formato} rivela">
         <div class="progetto__copertina">
           ${immagine(p.copertina, p.titolo, "progetto__img")}
           <span class="etichetta etichetta--${colore}">${sicuro(p.tipo)}</span>
+          ${apribile ? `<button class="progetto__apri" data-apri="${i}" aria-label="Apri il progetto ${sicuro(p.titolo.replace(/\*/g, ""))}"><span>Guarda il progetto +</span></button>` : ""}
         </div>
         <div class="progetto__testo">
           <span class="progetto__num">${num}</span>
@@ -100,7 +102,10 @@
             <h3 class="progetto__titolo">${formatta(p.titolo)}</h3>
             ${meta ? `<p class="progetto__meta">${meta}</p>` : ""}
             <p class="progetto__desc">${formatta(p.descrizione)}</p>
-            ${p.link ? link(p.link, 'Guarda il progetto <span aria-hidden="true">→</span>', 'class="progetto__link"') : ""}
+            <div class="progetto__azioni">
+              ${apribile ? `<button class="progetto__link" data-apri="${i}">Guarda il progetto <span aria-hidden="true">+</span></button>` : ""}
+              ${p.link ? link(p.link, sicuro(p.testoLink || "Visita il sito") + ' <span aria-hidden="true">↗</span>', 'class="progetto__link"') : ""}
+            </div>
           </div>
         </div>
       </article>`;
@@ -160,6 +165,49 @@
     <span>© ${new Date().getFullYear()} ${formatta(S.nome)}</span>
     <span>${sicuro(S.ruolo)}</span>
     <a href="#home">Torna su ↑</a>`;
+
+  /* ---------- SCHEDA PROGETTO (si apre se il progetto ha una "galleria") ---------- */
+  const scheda = document.createElement("dialog");
+  scheda.className = "scheda";
+  document.body.appendChild(scheda);
+
+  const apriScheda = (i) => {
+    const p = visibili[i];
+    const meta = [p.cliente, p.anno].filter(Boolean).map(formatta).join(" · ");
+    scheda.innerHTML = `
+      <button class="scheda__chiudi" aria-label="Chiudi">✕</button>
+      <header class="scheda__testa">
+        <span class="etichetta etichetta--${coloriEtichette[i % 4]}">${sicuro(p.tipo)}</span>
+        <h2 class="scheda__titolo">${formatta(p.titolo)}</h2>
+        ${meta ? `<p class="progetto__meta">${meta}</p>` : ""}
+        <p class="scheda__desc">${formatta(p.racconto || p.descrizione)}</p>
+        ${p.link ? link(p.link, sicuro(p.testoLink || "Visita il sito") + ' <span aria-hidden="true">↗</span>', 'class="bottone"') : ""}
+      </header>
+      <div class="scheda__galleria">
+        ${p.galleria.map((g) => {
+          const src = typeof g === "string" ? g : g.immagine;
+          const did = typeof g === "string" ? "" : g.didascalia || "";
+          return `<figure class="scheda__foto">${immagine(src, did || p.titolo, "")}${did ? `<figcaption>${formatta(did)}</figcaption>` : ""}</figure>`;
+        }).join("")}
+      </div>
+      ${p.crediti ? `<p class="scheda__crediti">${formatta(p.crediti)}</p>` : ""}`;
+    // foto orizzontali larghe, verticali affiancate
+    scheda.querySelectorAll(".scheda__foto img").forEach((img) => {
+      const segna = () => img.parentElement.classList.add(img.naturalWidth >= img.naturalHeight ? "larga" : "alta");
+      img.complete ? segna() : img.addEventListener("load", segna);
+    });
+    scheda.showModal();
+    scheda.scrollTop = 0;
+    document.body.style.overflow = "hidden";
+  };
+  scheda.addEventListener("close", () => (document.body.style.overflow = ""));
+  scheda.addEventListener("click", (e) => {
+    if (e.target === scheda || e.target.closest(".scheda__chiudi")) scheda.close();
+  });
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-apri]");
+    if (b) apriScheda(+b.dataset.apri);
+  });
 
   /* ---------- MICROINTERAZIONE: comparsa morbida allo scroll ---------- */
   const elementi = document.querySelectorAll(".rivela");

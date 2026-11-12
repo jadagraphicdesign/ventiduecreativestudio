@@ -361,7 +361,7 @@ a.contatto__valore:hover { color: var(--accento-3); }
   /* Su telefono una colonna, ma con larghezze e allineamenti diversi per dare ritmo */
   .progetti__griglia { grid-template-columns: 1fr; row-gap: 3.5rem; }
   .progetto--largo, .progetto--verticale, .progetto--piccolo, .progetto--medio { grid-column: 1; margin-top: 0; }
-  .progetto--largo     .progetto__copertina { aspect-ratio: 4 / 5; }
+  .progetto--largo     .progetto__copertina { aspect-ratio: 4 / 3; }
   .progetto--verticale { width: 88%; }
   .progetto--piccolo   { width: 72%; margin-left: auto; }
   .progetto--medio     { width: 92%; margin-left: auto; }
@@ -370,4 +370,52 @@ a.contatto__valore:hover { color: var(--accento-3); }
   .chi-sono__foto { width: 82%; }
   .contatti { margin-inline: .6rem; }
   .contatti__link { grid-template-columns: 1fr; }
+}
+
+/* =====================================================================
+   SCHEDA PROGETTO (galleria che si apre cliccando "Guarda il progetto")
+   ===================================================================== */
+.progetto__azioni { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; margin-top: .9rem; }
+.progetto__azioni .progetto__link { margin-top: 0; }
+button.progetto__link { background: none; border: 0; border-bottom: 1.5px solid var(--accento-1); padding: 0 0 2px; font: inherit; font-weight: var(--peso-medio); font-size: .9rem; color: inherit; cursor: pointer; }
+.progetto__apri {
+  position: absolute; inset: 0; width: 100%; border: 0; cursor: pointer;
+  background: transparent; display: flex; align-items: flex-end; justify-content: flex-end; padding: 1rem;
+}
+.progetto__apri span {
+  background: var(--panna); color: var(--inchiostro); border-radius: 999px; padding: .6em 1.1em;
+  font: var(--peso-medio) .8rem var(--font-testo);
+  opacity: 0; transform: translateY(8px); transition: opacity .3s ease, transform .3s ease;
+}
+.progetto__apri:hover span, .progetto__apri:focus-visible span { opacity: 1; transform: none; }
+@media (hover: none) { .progetto__apri span { opacity: 1; transform: none; } } /* su telefono sempre visibile */
+
+.scheda {
+  width: min(1200px, 100%); max-width: 100%; height: 100%; max-height: 100%;
+  margin: 0 auto; padding: 0; border: 0; background: var(--panna); color: var(--inchiostro);
+  overflow-y: auto; overscroll-behavior: contain;
+}
+.scheda::backdrop { background: rgba(42,36,32,.7); }
+.scheda__chiudi {
+  position: sticky; top: 1rem; float: right; margin: 1rem 1rem 0 0; z-index: 2;
+  width: 3rem; height: 3rem; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--inchiostro); color: var(--panna); font-size: 1.1rem;
+}
+.scheda__testa { padding: clamp(2rem, 6vw, 5rem) var(--margine) clamp(1.5rem, 4vw, 3rem); max-width: 52rem; }
+.scheda__testa .etichetta { position: static; }
+.scheda__titolo { font-size: clamp(2.4rem, 1.4rem + 5vw, 5.5rem); margin: 1rem 0 .4rem; }
+.scheda__desc { margin: 1.4rem 0 2rem; }
+.scheda__galleria {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(.8rem, 2vw, 1.5rem);
+  padding: 0 var(--margine); clear: both;
+}
+.scheda__foto { margin: 0; grid-column: span 2; }
+.scheda__foto.alta { grid-column: span 1; }
+.scheda__foto img, .scheda__foto .img-mancante { width: 100%; height: auto; object-fit: cover; border-radius: calc(var(--raggio) * .6); }
+.scheda__foto.alta img { aspect-ratio: 3 / 4; }
+.scheda__foto figcaption { font-size: .8rem; color: var(--grigio); margin-top: .5rem; }
+.scheda__crediti { padding: 2rem var(--margine) 4rem; font-size: .8rem; color: var(--grigio); }
+@media (max-width: 640px) {
+  .scheda__foto.alta { grid-column: span 2; }
+  .scheda__foto.alta img { aspect-ratio: auto; }
 }

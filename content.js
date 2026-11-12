@@ -23,9 +23,9 @@
 const SITO = {
 
   /* ---------- DATI GENERALI ---------- */
-  nome: "[IL TUO NOME]",                 // compare in alto a sinistra e nel footer
+  nome: "Giada Al Zeer",                 // compare in alto a sinistra e nel footer
   ruolo: "Graphic designer & content creator",
-  titoloPagina: "[IL TUO NOME] — Portfolio", // testo della scheda del browser
+  titoloPagina: "Giada Al Zeer — Portfolio", // testo della scheda del browser
   descrizionePagina: "Portfolio di graphic design, contenuti social, video e branding.",
 
 
@@ -41,8 +41,8 @@ const SITO = {
     sottotitolo: "Sono una graphic designer: creo identità visive, contenuti per Instagram, Reel e progetti UGC. [MODIFICA O ACCORCIA QUESTA FRASE]",
 
     // La tua foto o immagine personale (verticale, almeno 1200px di altezza)
-    immagine: "img/foto-home.svg",
-    testoAlternativo: "Ritratto di [IL TUO NOME]",
+    immagine: "img/foto-home.jpg",
+    testoAlternativo: "Ritratto di Giada Al Zeer",
 
     // "affiancata" = foto a destra e testo su sfondo panna (più leggibile)
     // "sfondo"     = foto a tutto schermo dietro al testo (con velatura scura)
@@ -76,20 +76,44 @@ const SITO = {
        "piccolo"   → immagine quadrata, piccola, a destra
        "medio"     → immagine orizzontale, spostata a destra
      Se togli la riga "formato", il sito alterna i formati da solo.
+
+     FACOLTATIVI per un progetto più ricco (vedi il progetto Amal):
+       galleria: [ ... ]  → elenco di immagini: compare il bottone
+                            "Guarda il progetto" che apre la scheda completa.
+                            Ogni voce può essere solo il percorso
+                            "img/progetti/nome.jpg" oppure
+                            { immagine: "img/...", didascalia: "testo" }
+       racconto: "..."    → testo più lungo mostrato nella scheda
+       testoLink: "..."   → testo del bottone del link (es. "Visita il sito")
+       crediti: "..."     → crediti in fondo alla scheda (foto, collaboratori)
   ------------------------------------------------------------------- */
   titoloProgetti: "Progetti *selezionati*",
   introProgetti: "Una selezione di lavori tra contenuti social, video e identità visive.",
 
   progetti: [
     {
-      titolo: "[TITOLO PROGETTO 1]",
-      tipo: "Contenuti social",                 // etichetta colorata
-      cliente: "[NOME CLIENTE]",
-      anno: "[ANNO]",
-      descrizione: "[Due righe: per chi hai lavorato, cosa hai realizzato e con quale obiettivo.]",
-      copertina: "img/progetti/progetto-1.svg",
-      link: "",                                  // es. "https://www.instagram.com/p/..." — lascia "" se non c'è
+      titolo: "*Amal* — reclaim your time",
+      tipo: "Branding e campagna",
+      cliente: "Progetto di tesi in Graphic Design",
+      anno: "2025",
+      descrizione: "Identità visiva e campagna per Amal, un progetto contro l’anestesia visiva contemporanea: un museo che invita a fermarsi e a guardare con tempo le immagini che di solito scorriamo.",
+      racconto: "Amal nasce come tesi in Graphic Design: un progetto contro l’anestesia visiva contemporanea, cioè l’abitudine a scorrere immagini senza più fermarsi a guardarle. Ho progettato il logo e il pay-off “reclaim your time”, la campagna di manifesti e totem, il libro che accompagna la visita, i biglietti d’ingresso e l’allestimento della mostra fotografica. Il ricavato dei biglietti è pensato per finanziare borse di studio per gli studenti dei territori documentati.",
+      copertina: "img/progetti/amal/copertina-manifesti.jpg",
+      link: "https://lajeiid.github.io/SITO/",
+      testoLink: "Visita il sito di Amal",
       formato: "largo",
+      galleria: [
+        { immagine: "img/progetti/amal/logo-costruzione.jpg", didascalia: "Logo e costruzione del marchio" },
+        { immagine: "img/progetti/amal/totem.jpg", didascalia: "Totem della campagna" },
+        { immagine: "img/progetti/amal/biglietti.jpg", didascalia: "Biglietti d’ingresso, fronte e retro" },
+        { immagine: "img/progetti/amal/libro.jpg", didascalia: "Il libro della mostra" },
+        { immagine: "img/progetti/amal/mostra-sospensione.jpg", didascalia: "Allestimento — “La sospensione della realtà”" },
+        { immagine: "img/progetti/amal/mostra-radici.jpg", didascalia: "Allestimento — “Radici nel vuoto”" },
+        { immagine: "img/progetti/amal/mostra-luce.jpg", didascalia: "Allestimento — “Luce nel buio”" },
+        { immagine: "img/progetti/amal/mostra-rallenta.jpg", didascalia: "Allestimento — “Rallenta, la memoria ha bisogno di tempo”" },
+        { immagine: "img/progetti/amal/rallenta-citazione.jpg" },
+      ],
+      crediti: "Fotografie esposte nella mostra: Hosny Salah.",
     },
     {
       titolo: "[TITOLO PROGETTO 2]",
@@ -136,9 +160,9 @@ const SITO = {
 
   /* ---------- CHI SONO ---------- */
   chiSono: {
-    titolo: "Piacere, sono *[IL TUO NOME]*",
+    titolo: "Piacere, sono *Giada*",
     foto: "img/foto-chi-sono.svg",
-    testoAlternativo: "Foto di [IL TUO NOME]",
+    testoAlternativo: "Foto di Giada Al Zeer",
     // Ogni frase tra virgolette è un paragrafo separato
     paragrafi: [
       "Sono una graphic designer e lavoro sui contenuti per i social: dall’identità visiva di un brand fino ai Reel e ai caroselli che la raccontano ogni giorno.",

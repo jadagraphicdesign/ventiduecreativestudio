@@ -67,3 +67,8 @@ In `content.js` trova `progetti: [` e incolla questo blocco nel punto in cui vuo
 - **Pagina bianca o messaggio di errore:** quasi sempre manca una virgola o una virgoletta nell'ultima modifica a `content.js`. Annulla con Ctrl/Cmd+Z e riprova.
 - **Immagine che non compare:** controlla maiuscole ed estensione, perché `.JPG` e `.jpg` per il sito sono file diversi.
 - **I font non si vedono:** i font arrivano da Google Fonts, quindi serve la connessione a internet.
+
+## Progetti con scheda e galleria
+
+Se a un progetto aggiungi `galleria: [ ... ]` (guarda l'esempio di Amal in `content.js`), sul sito compare il bottone **Guarda il progetto +**. Cliccandolo si apre una scheda a tutto schermo con il testo lungo (`racconto`) e tutte le immagini. Le foto orizzontali occupano tutta la larghezza, quelle verticali si affiancano a due a due.
+Metti le immagini di un progetto in una cartella dedicata, per esempio `img/progetti/amal/`.
