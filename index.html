@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio</title>
+  <meta name="description" content="">
+
+  <!-- Font: Montserrat (testo) + Playfair Display Italic (parole in evidenza) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Questo file è lo "scheletro": i contenuti arrivano da content.js -->
+
+  <header class="testata">
+    <a href="#home" class="testata__nome" data-campo="nome"></a>
+    <nav class="testata__menu" aria-label="Menu principale">
+      <a href="#progetti">Progetti</a>
+      <a href="#chi-sono">Chi sono</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="home"></section>
+
+    <!-- NASTRO SERVIZI -->
+    <div class="nastro" aria-label="Servizi"></div>
+
+    <!-- PROGETTI -->
+    <section id="progetti" class="sezione progetti">
+      <div class="sezione__testa">
+        <p class="sezione__numero">01 — Lavori</p>
+        <h2 class="sezione__titolo" data-campo="titoloProgetti"></h2>
+        <p class="sezione__intro" data-campo="introProgetti"></p>
+      </div>
+      <div class="progetti__griglia"></div>
+    </section>
+
+    <!-- CHI SONO -->
+    <section id="chi-sono" class="sezione chi-sono"></section>
+
+    <!-- CONTATTI -->
+    <section id="contatti" class="contatti"></section>
+  </main>
+
+  <footer class="piede"></footer>
+
+  <!-- Ordine importante: prima i contenuti, poi lo script che li mostra -->
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

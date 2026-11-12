@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+<rect width="1000" height="1000" fill="#F3B1C4"/>
+<circle cx="500" cy="300" r="170" fill="#E4572E"/>
+<text x="50%" y="510.0" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-weight="600" font-size="45" letter-spacing="3" fill="#2A2420">[COPERTINA 3]</text>
+<text x="50%" y="580" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="30" fill="#2A2420" opacity=".75">quadrata · 1:1</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000" width="1500" height="1000">
+<rect width="1500" height="1000" fill="#E4572E"/>
+<path d="M0 1000 Q750 520 1500 1000Z" fill="#F2C14E"/><circle cx="1240" cy="220" r="110" fill="#F3B1C4"/>
+<text x="50%" y="510.0" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-weight="600" font-size="45" letter-spacing="3" fill="#F6EFE3">[COPERTINA 4]</text>
+<text x="50%" y="580" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="30" fill="#F6EFE3" opacity=".75">orizzontale · 3:2</text>
+</svg>

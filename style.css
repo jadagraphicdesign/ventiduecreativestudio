@@ -1,0 +1,373 @@
+/* =====================================================================
+   STYLE.CSS
+   ---------------------------------------------------------------------
+   ▸ COLORI E FONT: cambiali qui sotto, si aggiornano in tutto il sito.
+     I colori sono PROVVISORI: sostituiscili con la tua palette
+     (scrivi il codice esadecimale, es. #E4572E).
+   ===================================================================== */
+
+:root {
+  /* --- Base --- */
+  --panna:        #F6EFE3;   /* sfondo principale */
+  --panna-scuro:  #ECE2D0;   /* riquadri e sfondi secondari */
+  --inchiostro:   #2A2420;   /* testo */
+  --grigio:       #6E6259;   /* testi secondari */
+
+  /* --- Accenti (palette provvisoria) --- */
+  --accento-1:    #E4572E;   /* pomodoro  → parole in corsivo, bottoni */
+  --accento-2:    #2F4BD8;   /* cobalto   → sezione contatti */
+  --accento-3:    #F2C14E;   /* burro     → nastro servizi */
+  --accento-4:    #F3B1C4;   /* rosa      → dettagli */
+
+  /* --- Font --- */
+  --font-testo:   "Montserrat", system-ui, sans-serif;
+  --font-corsivo: "Playfair Display", Georgia, serif;
+  --peso-leggero: 300;
+  --peso-medio:   500;
+
+  /* --- Misure --- */
+  --margine:      clamp(1.1rem, 4vw, 3.5rem);  /* spazio ai lati */
+  --larghezza:    1320px;                       /* larghezza massima */
+  --raggio:       18px;                         /* angoli arrotondati */
+}
+
+
+/* =====================================================================
+   Da qui in poi: impaginazione. Modifica solo se sai cosa cambi.
+   ===================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 4.5rem; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--panna);
+  color: var(--inchiostro);
+  font-family: var(--font-testo);
+  font-weight: var(--peso-leggero);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  line-height: 1.6;
+  overflow-x: clip;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { font-weight: var(--peso-medio); line-height: 1.05; margin: 0; letter-spacing: -0.02em; }
+
+/* Parole in corsivo colorato: *parola* in content.js */
+em {
+  font-family: var(--font-corsivo);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accento-1);
+  letter-spacing: -0.01em;
+}
+
+/* Segnaposto ben visibili */
+.segnaposto {
+  outline: 1.5px dashed currentColor;
+  outline-offset: 2px;
+  border-radius: 4px;
+  opacity: .75;
+}
+.segnaposto-link { text-decoration-style: dashed; }
+
+.occhiello, .sezione__numero, .progetto__num, .contatto__tipo {
+  font-size: .75rem;
+  font-weight: var(--peso-medio);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+/* ---------- Bottone ---------- */
+.bottone {
+  display: inline-flex; align-items: center; gap: .6em;
+  padding: .95em 1.6em;
+  border-radius: 999px;
+  background: var(--inchiostro); color: var(--panna);
+  text-decoration: none;
+  font-weight: var(--peso-medio); font-size: .95rem;
+  transition: transform .25s ease, background .25s ease;
+}
+.bottone:hover, .bottone:focus-visible { background: var(--accento-1); transform: translateY(-2px); }
+.bottone--chiaro { background: var(--panna); color: var(--inchiostro); }
+.bottone--chiaro:hover { background: var(--accento-3); }
+
+/* ---------- Testata ---------- */
+.testata {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: 1rem var(--margine);
+  background: color-mix(in srgb, var(--panna) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: box-shadow .3s ease;
+}
+.testata.scorrendo { box-shadow: 0 1px 0 rgba(42,36,32,.12); }
+.testata__nome {
+  font-family: var(--font-corsivo); font-style: italic; font-size: 1.3rem;
+  text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.testata__menu { display: flex; gap: clamp(.9rem, 3vw, 2.2rem); }
+.testata__menu a {
+  text-decoration: none; font-size: .85rem; font-weight: var(--peso-medio);
+  padding: .4rem 0; background: linear-gradient(var(--accento-1), var(--accento-1)) left bottom / 0 1.5px no-repeat;
+  transition: background-size .3s ease;
+}
+.testata__menu a:hover { background-size: 100% 1.5px; }
+
+/* ---------- HOME ---------- */
+.home {
+  max-width: var(--larghezza); margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 4rem) var(--margine) clamp(3rem, 7vw, 6rem);
+}
+.home__frase {
+  font-size: clamp(2.4rem, 1.4rem + 4.6vw, 5.6rem);
+  margin: .9rem 0 1.4rem;
+  font-weight: var(--peso-medio);
+}
+.home__frase em { font-size: 1.06em; }
+.home__sotto { max-width: 34rem; margin: 0 0 2rem; color: var(--grigio); }
+.home__foto { position: relative; margin: 0; }
+.home__img, .home__foto .img-mancante { width: 100%; height: 100%; object-fit: cover; }
+
+/* Variante "affiancata": testo a sinistra, foto ad arco a destra */
+.home--affiancata {
+  display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center;
+}
+.home--affiancata .home__foto {
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px var(--raggio) var(--raggio);
+  overflow: visible;
+}
+.home--affiancata .home__img,
+.home--affiancata .img-mancante { border-radius: inherit; }
+.home--affiancata .home__foto::before { /* blocco colorato sfalsato dietro la foto */
+  content: ""; position: absolute; inset: 6% -5% -4% 8%;
+  background: var(--accento-4); border-radius: inherit; z-index: -1;
+}
+
+/* Variante "sfondo": foto a tutto schermo con velatura */
+.home--sfondo {
+  position: relative; max-width: none; min-height: 88svh;
+  display: flex; align-items: flex-end; color: var(--panna); isolation: isolate;
+}
+.home--sfondo .home__foto { position: absolute; inset: 0; z-index: -1; }
+.home--sfondo .home__foto::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(30,24,20,.82) 0%, rgba(30,24,20,.35) 55%, rgba(30,24,20,.15) 100%);
+}
+.home--sfondo .home__testo { max-width: 52rem; }
+.home--sfondo .home__sotto { color: color-mix(in srgb, var(--panna) 85%, transparent); }
+.home--sfondo em { color: var(--accento-3); }
+.home--sfondo .bottone { background: var(--panna); color: var(--inchiostro); }
+.home--sfondo .adesivo { top: auto; bottom: 2rem; right: var(--margine); left: auto; }
+
+/* Adesivo rotondo che gira (microinterazione n.1) */
+.adesivo {
+  position: absolute; left: -2.2rem; bottom: 8%;
+  width: clamp(6.5rem, 11vw, 8.5rem); aspect-ratio: 1;
+  display: grid; place-items: center;
+  background: var(--accento-3); color: var(--inchiostro);
+  border-radius: 50%; text-decoration: none;
+  box-shadow: 0 8px 24px rgba(42,36,32,.15);
+  transition: transform .3s ease;
+}
+.adesivo svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: gira 18s linear infinite; }
+.adesivo text { font: 500 10.5px var(--font-testo); letter-spacing: .14em; text-transform: uppercase; fill: currentColor; }
+.adesivo__freccia { font-size: 1.6rem; }
+.adesivo:hover, .adesivo:active { transform: scale(1.08) rotate(-8deg); }
+@keyframes gira { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .adesivo svg { animation: none; } }
+
+/* ---------- Nastro servizi ---------- */
+.nastro {
+  background: var(--accento-3);
+  transform: rotate(-1.5deg);
+  margin: 0 -2vw;
+  padding: 1.1rem var(--margine);
+  border-block: 1.5px solid var(--inchiostro);
+}
+.nastro__riga {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: .4rem 1.2rem;
+  font-size: clamp(1.25rem, 1rem + 1.8vw, 2.4rem); font-weight: var(--peso-medio);
+  letter-spacing: -0.01em; line-height: 1.2;
+}
+.nastro .corsivo { font-family: var(--font-corsivo); font-style: italic; font-weight: 400; }
+.nastro .stella { color: var(--accento-1); font-size: .7em; }
+.nastro__riga > .stella:last-child { display: none; }
+
+/* ---------- Sezioni ---------- */
+.sezione {
+  max-width: var(--larghezza); margin: 0 auto;
+  padding: clamp(4.5rem, 10vw, 9rem) var(--margine) clamp(3rem, 6vw, 5rem);
+}
+.sezione__testa { margin-bottom: clamp(2.5rem, 6vw, 5rem); }
+.sezione__numero { color: var(--grigio); margin: 0 0 1rem; }
+.sezione__titolo { font-size: clamp(2.2rem, 1.4rem + 4vw, 5rem); }
+.sezione__intro { max-width: 30rem; color: var(--grigio); margin: 1.2rem 0 0; }
+.progetti .sezione__testa { display: grid; grid-template-columns: 1fr auto; align-items: end; column-gap: 2rem; }
+.progetti .sezione__numero { grid-column: 1 / -1; }
+
+/* ---------- Progetti: griglia editoriale ---------- */
+.progetti__griglia {
+  display: grid; grid-template-columns: repeat(12, 1fr);
+  column-gap: clamp(1rem, 3vw, 2.5rem); row-gap: clamp(3.5rem, 8vw, 7rem);
+}
+.progetto__copertina {
+  position: relative; overflow: hidden; border-radius: var(--raggio);
+  background: var(--panna-scuro);
+}
+.progetto__img, .progetto__copertina .img-mancante {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .8s cubic-bezier(.2,.7,.2,1);
+}
+.progetto:hover .progetto__img { transform: scale(1.04); }
+
+.progetto--largo     { grid-column: 1 / -1; }
+.progetto--largo     .progetto__copertina { aspect-ratio: 16 / 8; }
+.progetto--verticale { grid-column: 1 / span 6; }
+.progetto--verticale .progetto__copertina { aspect-ratio: 4 / 5; }
+.progetto--piccolo   { grid-column: 8 / span 5; margin-top: clamp(4rem, 18vw, 16rem); }
+.progetto--piccolo   .progetto__copertina { aspect-ratio: 1 / 1; }
+.progetto--medio     { grid-column: 4 / span 9; }
+.progetto--medio     .progetto__copertina { aspect-ratio: 3 / 2; }
+
+.progetto__testo {
+  display: grid; grid-template-columns: 3.2rem 1fr; gap: 0 1rem;
+  padding-top: 1.3rem;
+}
+.progetto--largo .progetto__testo { grid-template-columns: 3.2rem 1fr; max-width: 52rem; }
+.progetto__num { color: var(--accento-1); padding-top: .55rem; }
+.progetto__titolo { font-size: clamp(1.45rem, 1.1rem + 1.3vw, 2.3rem); }
+.progetto--largo .progetto__titolo { font-size: clamp(1.7rem, 1.2rem + 2vw, 3rem); }
+.progetto__meta { margin: .5rem 0 0; font-size: .8rem; font-weight: var(--peso-medio); color: var(--grigio); letter-spacing: .04em; }
+.progetto__desc { margin: .7rem 0 0; max-width: 36rem; }
+.progetto__link {
+  display: inline-block; margin-top: .9rem; font-weight: var(--peso-medio); font-size: .9rem;
+  text-decoration: none; border-bottom: 1.5px solid var(--accento-1); padding-bottom: 2px;
+}
+
+/* Etichette colorate (tipo di lavoro) */
+.etichetta, .chip {
+  display: inline-block; padding: .45em 1em; border-radius: 999px;
+  font-size: .75rem; font-weight: var(--peso-medio); letter-spacing: .03em;
+  color: var(--inchiostro); line-height: 1.2;
+}
+.etichetta { position: absolute; top: 1rem; left: 1rem; }
+.etichetta--c1, .chip--c1 { background: var(--accento-1); color: #fff; }
+.etichetta--c2, .chip--c2 { background: var(--accento-2); color: #fff; }
+.etichetta--c3, .chip--c3 { background: var(--accento-3); }
+.etichetta--c4, .chip--c4 { background: var(--accento-4); }
+
+/* Riquadro se l'immagine manca */
+.img-mancante {
+  display: grid; place-items: center; text-align: center; min-height: 12rem;
+  background: repeating-linear-gradient(-45deg, var(--panna-scuro) 0 14px, var(--panna) 14px 28px);
+  color: var(--grigio); font-weight: var(--peso-medio); font-size: .85rem; padding: 1rem;
+}
+.img-mancante small { font-weight: var(--peso-leggero); word-break: break-all; }
+
+/* ---------- Chi sono ---------- */
+.chi-sono__griglia {
+  display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 6vw, 6rem); align-items: start;
+}
+.chi-sono__foto { margin: 0; position: relative; }
+.chi-sono__img, .chi-sono__foto .img-mancante {
+  width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--raggio);
+  position: relative; z-index: 1;
+}
+.chi-sono__foto::after { /* cornice colorata sfalsata */
+  content: ""; position: absolute; inset: 1.2rem -1.2rem -1.2rem 1.2rem;
+  border: 1.5px solid var(--accento-2); border-radius: var(--raggio);
+}
+.chi-sono__testo .sezione__titolo { margin-bottom: 1.8rem; font-size: clamp(2rem, 1.3rem + 3.2vw, 4rem); }
+.chi-sono__testo p { margin: 0 0 1.1rem; max-width: 38rem; }
+.competenze { list-style: none; padding: 0; margin: 2rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.citazione {
+  margin: clamp(4rem, 9vw, 8rem) auto 0; max-width: 60rem; text-align: center;
+  font-size: clamp(1.8rem, 1.1rem + 3.2vw, 4rem); font-weight: var(--peso-leggero);
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.citazione::before {
+  content: "“"; display: block; font-family: var(--font-corsivo); color: var(--accento-4);
+  font-size: 2.5em; line-height: .6; margin-bottom: .2em;
+}
+
+/* ---------- Contatti ---------- */
+.contatti {
+  background: var(--accento-2); color: var(--panna);
+  margin: clamp(3rem, 6vw, 5rem) var(--margine) 0;
+  border-radius: calc(var(--raggio) * 2);
+  padding: clamp(3rem, 8vw, 7rem) clamp(1.4rem, 6vw, 6rem);
+}
+.contatti .sezione__numero { color: color-mix(in srgb, var(--panna) 70%, transparent); }
+.contatti__titolo { font-size: clamp(2.6rem, 1.4rem + 6vw, 7.5rem); }
+.contatti em { color: var(--accento-3); }
+.contatti__testo { max-width: 34rem; margin: 1.5rem 0 3rem; }
+.contatti__link {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  border-top: 1.5px solid color-mix(in srgb, var(--panna) 40%, transparent);
+  padding-top: 2rem; margin-bottom: 2.5rem;
+}
+.contatto { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+.contatto__tipo { color: var(--accento-3); }
+.contatto__valore {
+  font-size: clamp(1.25rem, .9rem + 1.8vw, 2.4rem); font-weight: var(--peso-medio);
+  text-decoration: none; overflow-wrap: anywhere; line-height: 1.2;
+}
+a.contatto__valore:hover { color: var(--accento-3); }
+.contatti__altri { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
+.contatti__altri a { font-weight: var(--peso-medio); }
+
+/* ---------- Footer ---------- */
+.piede {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .8rem 2rem;
+  padding: 2rem var(--margine) 2.5rem; font-size: .8rem; color: var(--grigio);
+}
+.piede a { text-decoration: none; font-weight: var(--peso-medio); color: var(--inchiostro); }
+
+/* ---------- Microinterazione n.2: comparsa allo scroll ---------- */
+.rivela { opacity: 0; transform: translateY(32px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+.rivela.visibile { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rivela { opacity: 1; transform: none; transition: none; } }
+
+
+/* =====================================================================
+   TABLET E TELEFONO
+   ===================================================================== */
+@media (max-width: 900px) {
+  .home--affiancata { grid-template-columns: 1fr; }
+  .home--affiancata .home__foto { width: min(86%, 26rem); margin: 1rem auto 0; }
+  .progetto--verticale { grid-column: 1 / span 7; }
+  .progetto--piccolo   { grid-column: 8 / span 5; margin-top: clamp(6rem, 30vw, 14rem); }
+  .progetto--medio     { grid-column: 2 / -1; }
+  .chi-sono__griglia { grid-template-columns: 1fr; }
+  .chi-sono__foto { width: min(80%, 24rem); }
+}
+
+@media (max-width: 640px) {
+  .testata { padding-block: .8rem; }
+  .testata__nome { font-size: 1.1rem; }
+  .testata__menu { gap: .9rem; }
+  .testata__menu a { font-size: .78rem; }
+
+  .home { padding-top: 1rem; }
+  .home__sotto { font-size: 1rem; }
+  .adesivo { left: -1rem; bottom: 4%; }
+
+  .progetti .sezione__testa { grid-template-columns: 1fr; }
+  /* Su telefono una colonna, ma con larghezze e allineamenti diversi per dare ritmo */
+  .progetti__griglia { grid-template-columns: 1fr; row-gap: 3.5rem; }
+  .progetto--largo, .progetto--verticale, .progetto--piccolo, .progetto--medio { grid-column: 1; margin-top: 0; }
+  .progetto--largo     .progetto__copertina { aspect-ratio: 4 / 5; }
+  .progetto--verticale { width: 88%; }
+  .progetto--piccolo   { width: 72%; margin-left: auto; }
+  .progetto--medio     { width: 92%; margin-left: auto; }
+  .progetto__testo { grid-template-columns: 2.2rem 1fr; gap: 0 .6rem; }
+
+  .chi-sono__foto { width: 82%; }
+  .contatti { margin-inline: .6rem; }
+  .contatti__link { grid-template-columns: 1fr; }
+}
