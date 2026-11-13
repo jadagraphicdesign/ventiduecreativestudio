@@ -25,7 +25,9 @@ const SITO = {
   /* ---------- DATI GENERALI ---------- */
   nome: "Ventidue Creative Studio",
   nomeBreve: "Ventidue",                 // versione corta, usata in alto sui telefoni (se non c'è il logo)
-  logo: "img/logo-ventidue.png",         // logo in alto a sinistra (lascia "" per mostrare il nome scritto)                 // compare in alto a sinistra e nel footer
+  logo: "img/logo-ventidue.png",         // logo in alto a sinistra (lascia "" per mostrare il nome scritto)
+  logoCompleto: "img/logo-completo.png", // logo con faccina, in fondo alla pagina
+  faccina: "img/faccina.png",            // la tua faccina: al centro dell'adesivo che gira e nei Contatti                 // compare in alto a sinistra e nel footer
   ruolo: "Graphic designer · Brand identity, packaging e contenuti social",
   titoloPagina: "Ventidue Creative Studio — Graphic design a Modena | Brand identity e packaging", // testo della scheda del browser
   descrizionePagina: "Ventidue Creative Studio, lo studio di graphic design di Giada Al Zeer a Modena: brand identity, packaging, campagne e contenuti social per brand che vogliono farsi ricordare. Guarda i progetti.",

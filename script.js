@@ -76,7 +76,7 @@
           <defs><path id="cerchio" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
           <text><textPath href="#cerchio" textLength="285" lengthAdjust="spacing">${sicuro(giri)}</textPath></text>
         </svg>
-        <span class="adesivo__freccia">↓</span>
+        ${S.faccina ? `<img class="adesivo__faccina" src="${sicuro(S.faccina)}" alt="">` : `<span class="adesivo__freccia">↓</span>`}
       </a>` : ""}
     </figure>`;
 
@@ -238,6 +238,7 @@
   const altri = (K.altriLink || []).map((l) => link(l.link, sicuro(l.nome) + ' <span aria-hidden="true">↗</span>')).join("");
 
   $("#contatti").innerHTML = `
+    ${S.faccina ? `<img class="contatti__faccina" src="${sicuro(S.faccina.replace(".png", "-chiara.png"))}" alt="" aria-hidden="true">` : ""}
     <p class="sezione__numero">04 — Contatti</p>
     <h2 class="contatti__titolo">${formatta(K.titolo)}</h2>
     <p class="contatti__testo">${formatta(K.testo)}</p>
@@ -260,6 +261,7 @@
 
   /* ---------- FOOTER ---------- */
   $(".piede").innerHTML = `
+    ${S.logoCompleto ? `<a href="#home" class="piede__logo"><img src="${sicuro(S.logoCompleto)}" alt="${sicuro(S.nome)}"></a>` : ""}
     <span>© ${new Date().getFullYear()} ${formatta(S.nome)}</span>
     <span>${sicuro(S.ruolo)}</span>
     <a href="#home">Torna su ↑</a>`;

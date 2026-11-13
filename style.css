@@ -756,3 +756,16 @@ h1 em, h2 em, h3 em, .sz__titolo em, .scheda__titolo em, .caso__titolo em { font
 .scheda__social { padding: clamp(3rem, 7vw, 5rem) var(--margine); clear: both; }
 .caso__rubrica { font-family: var(--font-corsivo); font-style: italic; font-size: 1.3rem; margin: .8rem 0 0; color: var(--accento-1); }
 @media (max-width: 760px) { .caso-card { grid-template-columns: 1fr; } }
+
+/* Faccina */
+.adesivo__faccina { width: 52%; height: auto; position: relative; transition: transform .4s ease; }
+.adesivo:hover .adesivo__faccina { transform: rotate(-10deg) scale(1.05); }
+.contatti { position: relative; overflow: hidden; }
+.contatti__faccina {
+  position: absolute; right: clamp(1rem, 5vw, 4rem); top: clamp(1.5rem, 5vw, 4rem); width: clamp(5.5rem, 13vw, 10rem);
+  transform: rotate(10deg); transition: transform .6s cubic-bezier(.2,.7,.2,1); pointer-events: none;
+}
+.contatti:hover .contatti__faccina { transform: rotate(-4deg) translateY(-6px); }
+.piede { align-items: center; }
+.piede__logo img { height: 3.6rem; width: auto; display: block; }
+@media (max-width: 640px) { .contatti__faccina { width: 4.5rem; top: 1.4rem; right: 1.2rem; } .piede__logo { width: 100%; } }
