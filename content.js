@@ -121,24 +121,71 @@ const SITO = {
       cliente: "Al Meriggio d’Or, Valpolicella",
       anno: "2025",
       descrizione: "Identità visiva completa per un laboratorio di miele, saponi naturali e candele in cera d’api: logo, etichette, packaging, campagna affissioni, contenuti Instagram e brand manual.",
-      racconto: "Al Meriggio d’Or è un’azienda familiare di Sant’Ambrogio di Valpolicella che produce miele biologico, saponette naturali e candele in cera d’api. Il nome nasce dalla canzone dei fiori di “Alice nel Paese delle Meraviglie”: per questo ho costruito un’identità morbida e un po’ fiabesca. Il marchio è una piccola ape stilizzata in volo; le texture floreali ad acquerello cambiano colore per ogni varietà di miele (rosmarino, rosa canina, millefiori, biancospino) e tornano su etichette, scatole, segnalibri e feed Instagram. Il progetto comprende il brand manual con regole d’uso del marchio, palette, tipografia, packaging, stationery, campagna affissioni “C’è aria di dolcezza”, social media, merchandising e allestimento del punto vendita.",
-      copertina: "img/progetti/meriggio/depliant.jpg",
+      copertina: "img/progetti/meriggio/apicoltrice.jpg",
+      // Oggetto scontornato (PNG o WEBP trasparente) che "esce" dalla copertina
+      dettaglio: "img/progetti/meriggio/scontornati/vasetto-biancospino.webp",
       link: "docs/brand-manual-al-meriggio-dor.pdf",
       testoLink: "Sfoglia il brand manual (PDF)",
       formato: "medio",
-      galleria: [
-        { immagine: "img/progetti/meriggio/insegna.jpg", didascalia: "Logo e insegna in legno del punto vendita" },
-        { immagine: "img/progetti/meriggio/vasetto-rosmarino.jpg", didascalia: "Packaging miele — Rosmarino" },
-        { immagine: "img/progetti/meriggio/vasetto-rosa-canina.jpg", didascalia: "Packaging miele — Rosa canina" },
-        { immagine: "img/progetti/meriggio/vasetto-millefiori.jpg", didascalia: "Packaging miele — Millefiori" },
-        { immagine: "img/progetti/meriggio/vasetto-biancospino.jpg", didascalia: "Packaging miele — Biancospino" },
-        { immagine: "img/progetti/meriggio/segnalibri.jpg", didascalia: "Segnalibri promozionali con le schede botaniche" },
-        { immagine: "img/progetti/meriggio/poster-millefiori.jpg", didascalia: "Campagna affissioni “C’è aria di dolcezza”" },
-        { immagine: "img/progetti/meriggio/poster-biancospino.jpg", didascalia: "Campagna affissioni “C’è profumo di dolcezza”" },
-        { immagine: "img/progetti/meriggio/saponetta-rosa-canina.jpg", didascalia: "Packaging saponetta naturale alla rosa canina" },
-        { immagine: "img/progetti/meriggio/candela-rosa-canina.jpg", didascalia: "Candela in cera d’api e scatola con rilievo a secco" },
-        { immagine: "img/progetti/meriggio/scatola.jpg", didascalia: "Scatola regalo" },
-        { immagine: "img/progetti/meriggio/social.jpg", didascalia: "Feed Instagram" },
+
+      // Colori della scheda di questo progetto (facoltativo)
+      tema: { "panna": "#F7F1E6", "accento-1": "#2F5654", "accento-3": "#F0CC85" },
+
+      /* SEZIONI della scheda, in ordine. Tipi disponibili:
+         "apertura" (foto grande in cima), "testo", "colori",
+         "collage" (oggetti scontornati su fondo colorato),
+         "coppia" (due immagini sfalsate), "immagine".          */
+      sezioni: [
+        { tipo: "apertura", immagine: "img/progetti/meriggio/apicoltrice.jpg", didascalia: "Apicoltrice con la tuta Al Meriggio d’Or" },
+        {
+          tipo: "testo",
+          titolo: "C’era una *volta*…",
+          testo: "Al Meriggio d’Or è un’azienda di famiglia nata nel 1993 a Sant’Ambrogio di Valpolicella, tra colline, vigneti e fiori selvatici: miele biologico, saponette naturali e candele in cera d’api. Il nome viene dalla canzone dei fiori di “Alice nel Paese delle Meraviglie”, e da lì è nata un’identità morbida e un po’ fiabesca: una piccola ape in volo come marchio, una scritta a mano, texture floreali ad acquerello e un tono gentile, che parla di lentezza e cura.",
+        },
+        {
+          tipo: "colori",
+          titolo: "Un miele, un *colore*",
+          testo: "Ogni varietà ha il suo colore e il suo fiore. Il sistema si riconosce a colpo d’occhio sullo scaffale e torna identico su etichette, segnalibri e feed Instagram.",
+          elementi: [
+            { nome: "Rosmarino", nota: "Forza vitale, memoria e rinascita", colore: "#3F6B64", immagine: "img/progetti/meriggio/scontornati/vasetto-rosmarino.webp" },
+            { nome: "Rosa canina", nota: "La forza della semplicità", colore: "#C9445A", immagine: "img/progetti/meriggio/scontornati/vasetto-rosa-canina.webp" },
+            { nome: "Millefiori", nota: "C’è aria di dolcezza", colore: "#C2848F", immagine: "img/progetti/meriggio/scontornati/vasetto-millefiori.webp" },
+            { nome: "Biancospino", nota: "Protezione, serenità e rinascita", colore: "#F0CC85", testo: "#2F5654", immagine: "img/progetti/meriggio/scontornati/vasetto-biancospino.webp" },
+          ],
+        },
+        {
+          tipo: "coppia",
+          titolo: "Il marchio *fuori* dal vasetto",
+          immagini: [
+            { immagine: "img/progetti/meriggio/insegna.jpg", didascalia: "Insegna in legno del punto vendita" },
+            { immagine: "img/progetti/meriggio/cappellino.jpg", didascalia: "Merchandising: cappellino e felpa" },
+          ],
+        },
+        {
+          tipo: "collage",
+          colore: "#2F5654",
+          titolo: "Dal laboratorio alla *borsa della spesa*",
+          testo: "Packaging, shopper e merchandising seguono le stesse regole: fondo panna, texture floreale, marchio scritto a mano.",
+          elementi: [
+            { immagine: "img/progetti/meriggio/scontornati/shopper-juta.webp", didascalia: "Shopper in juta" },
+            { immagine: "img/progetti/meriggio/scontornati/tazze.webp", didascalia: "Tazze “drink me” e “it’s always tea time”" },
+            { immagine: "img/progetti/meriggio/scontornati/candela.webp", didascalia: "Candela in cera d’api" },
+            { immagine: "img/progetti/meriggio/scontornati/saponetta.webp", didascalia: "Saponetta naturale" },
+            { immagine: "img/progetti/meriggio/scontornati/shopper-fiori.webp", didascalia: "Shopper in carta" },
+            { immagine: "img/progetti/meriggio/scontornati/scatola.webp", didascalia: "Scatola regalo" },
+          ],
+        },
+        {
+          tipo: "coppia",
+          titolo: "C’è aria di *dolcezza*",
+          testo: "La campagna affissioni porta il vasetto tra cielo e fiori: un messaggio semplice, legato ai profumi della Valpolicella.",
+          immagini: [
+            { immagine: "img/progetti/meriggio/poster-millefiori.jpg", didascalia: "Affissione — Millefiori" },
+            { immagine: "img/progetti/meriggio/poster-biancospino.jpg", didascalia: "Affissione — Biancospino" },
+          ],
+        },
+        { tipo: "immagine", titolo: "Schede *botaniche*", testo: "Segnalibri promozionali: da un lato la texture, dall’altro la storia di ogni pianta.", immagine: "img/progetti/meriggio/segnalibri.jpg", didascalia: "Segnalibri promozionali" },
+        { tipo: "immagine", stretta: true, titolo: "Il feed *Instagram*", immagine: "img/progetti/meriggio/social.jpg", didascalia: "Griglia Instagram: prodotto, ambientazione, scheda botanica" },
       ],
     },
     {

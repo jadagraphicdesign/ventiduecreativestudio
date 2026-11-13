@@ -88,9 +88,10 @@
       const num = String(i + 1).padStart(2, "0");
       const colore = coloriEtichette[i % coloriEtichette.length];
       const meta = [p.cliente, p.anno].filter(Boolean).map(formatta).join(" · ");
-      const apribile = (p.galleria || []).length > 0;
+      const apribile = (p.galleria || []).length > 0 || (p.sezioni || []).length > 0;
       return `
-      <article class="progetto progetto--${formato} rivela">
+      <article class="progetto progetto--${formato} rivela${p.dettaglio ? " progetto--con-dettaglio" : ""}">
+        ${p.dettaglio ? `<img class="progetto__dettaglio" src="${sicuro(p.dettaglio)}" alt="" aria-hidden="true" loading="lazy">` : ""}
         <div class="progetto__copertina">
           ${immagine(p.copertina, (p.titolo + " — " + p.tipo).replace(/\*/g, ""), "progetto__img")}
           <span class="etichetta etichetta--${colore}">${sicuro(p.tipo)}</span>
@@ -171,11 +172,45 @@
   scheda.className = "scheda";
   document.body.appendChild(scheda);
 
+  /* Sezioni "art direction" per i progetti che le hanno (vedi Al Meriggio d'Or in content.js) */
+  const sezione = (z) => {
+    const titolo = z.titolo ? `<h3 class="sz__titolo">${formatta(z.titolo)}</h3>` : "";
+    const testo = z.testo ? `<p class="sz__testo">${formatta(z.testo)}</p>` : "";
+    const img = (src, alt, cl = "") => `<img class="${cl}" src="${sicuro(src)}" alt="${sicuro(String(alt || "").replace(/\*/g, ""))}" loading="lazy">`;
+    switch (z.tipo) {
+      case "apertura":
+        return `<section class="sz sz--apertura">${img(z.immagine, z.didascalia)}</section>`;
+      case "testo":
+        return `<section class="sz sz--testo">${titolo}${testo}</section>`;
+      case "colori":
+        return `<section class="sz sz--colori">${titolo}${testo}
+          <div class="colori">${z.elementi.map((e) => `
+            <figure class="colore" style="--c:${sicuro(e.colore)};--t:${sicuro(e.testo || "#fff")}">
+              ${img(e.immagine, "Packaging " + e.nome, "colore__oggetto")}
+              <figcaption><span class="colore__nome">${formatta(e.nome)}</span>${e.nota ? `<span class="colore__nota">${formatta(e.nota)}</span>` : ""}</figcaption>
+            </figure>`).join("")}</div></section>`;
+      case "collage":
+        return `<section class="sz sz--collage" style="--c:${sicuro(z.colore || "var(--inchiostro)")}">
+          <svg class="volo" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 320 C 180 120, 320 380, 480 200 S 760 40, 1020 140"/></svg>
+          <div class="collage__testa">${titolo}${testo}</div>
+          <div class="collage">${z.elementi.map((e, k) => `
+            <figure class="pezzo pezzo--${k + 1}">${img(e.immagine, e.didascalia)}${e.didascalia ? `<figcaption>${formatta(e.didascalia)}</figcaption>` : ""}</figure>`).join("")}</div></section>`;
+      case "coppia":
+        return `<section class="sz sz--coppia">${titolo}${testo}<div class="coppia">${z.immagini.map((g) => `
+            <figure>${img(g.immagine, g.didascalia)}${g.didascalia ? `<figcaption>${formatta(g.didascalia)}</figcaption>` : ""}</figure>`).join("")}</div></section>`;
+      default: // "immagine"
+        return `<section class="sz sz--immagine${z.stretta ? " sz--stretta" : ""}">${titolo}${testo}<figure>${img(z.immagine, z.didascalia)}${z.didascalia ? `<figcaption>${formatta(z.didascalia)}</figcaption>` : ""}</figure></section>`;
+    }
+  };
+
   const apriScheda = (i) => {
     const p = visibili[i];
+    scheda.removeAttribute("style");
+    if (p.tema) Object.entries(p.tema).forEach(([k, v]) => scheda.style.setProperty("--" + k, v));
     const meta = [p.cliente, p.anno].filter(Boolean).map(formatta).join(" · ");
     scheda.innerHTML = `
       <button class="scheda__chiudi" aria-label="Chiudi">✕</button>
+      ${(p.sezioni || []).filter((z) => z.tipo === "apertura").map(sezione).join("")}
       <header class="scheda__testa">
         <span class="etichetta etichetta--${coloriEtichette[i % 4]}">${sicuro(p.tipo)}</span>
         <h2 class="scheda__titolo">${formatta(p.titolo)}</h2>
@@ -183,8 +218,9 @@
         <p class="scheda__desc">${formatta(p.racconto || p.descrizione)}</p>
         ${p.link ? link(p.link, sicuro(p.testoLink || "Visita il sito") + ' <span aria-hidden="true">↗</span>', 'class="bottone"') : ""}
       </header>
+      ${(p.sezioni || []).filter((z) => z.tipo !== "apertura").map(sezione).join("")}
       <div class="scheda__galleria">
-        ${p.galleria.map((g) => {
+        ${(p.galleria || []).map((g) => {
           const src = typeof g === "string" ? g : g.immagine;
           const did = typeof g === "string" ? "" : g.didascalia || "";
           return `<figure class="scheda__foto">${immagine(src, did || p.titolo, "")}${did ? `<figcaption>${formatta(did)}</figcaption>` : ""}</figure>`;

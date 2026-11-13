@@ -72,3 +72,19 @@ In `content.js` trova `progetti: [` e incolla questo blocco nel punto in cui vuo
 
 Se a un progetto aggiungi `galleria: [ ... ]` (guarda l'esempio di Amal in `content.js`), sul sito compare il bottone **Guarda il progetto +**. Cliccandolo si apre una scheda a tutto schermo con il testo lungo (`racconto`) e tutte le immagini. Le foto orizzontali occupano tutta la larghezza, quelle verticali si affiancano a due a due.
 Metti le immagini di un progetto in una cartella dedicata, per esempio `img/progetti/amal/`.
+
+## Schede "art direction" (come Al Meriggio d'Or)
+
+Al posto di `galleria` puoi usare `sezioni`: un elenco di blocchi che si impaginano da soli. I tipi disponibili sono:
+- `apertura`: una foto grande in cima alla scheda
+- `testo`: un titolo e un paragrafo
+- `colori`: oggetti scontornati che escono da archi colorati, utile per varianti di prodotto
+- `collage`: oggetti scontornati su un fondo colorato, con la linea tratteggiata di volo
+- `coppia`: due immagini sfalsate
+- `immagine`: una sola immagine (aggiungi `stretta: true` per rimpicciolirla)
+
+Altri due campi facoltativi:
+- `dettaglio`: un'immagine scontornata, in PNG o WEBP con lo sfondo trasparente, che "esce" dalla copertina in home.
+- `tema`: cambia i colori della scheda, per esempio `{ "accento-1": "#2F5654" }`.
+
+Per scontornare un'immagine puoi usare "Rimuovi sfondo" di Canva o di Photoshop: esportala in PNG trasparente e mettila in `img/progetti/nome-progetto/scontornati/`.

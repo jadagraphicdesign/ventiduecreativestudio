@@ -419,3 +419,107 @@ button.progetto__link { background: none; border: 0; border-bottom: 1.5px solid 
   .scheda__foto.alta { grid-column: span 2; }
   .scheda__foto.alta img { aspect-ratio: auto; }
 }
+
+/* =====================================================================
+   OGGETTO SCONTORNATO CHE "ESCE" DALLA COPERTINA (campo "dettaglio")
+   ===================================================================== */
+.progetto--con-dettaglio { position: relative; }
+.progetto__dettaglio {
+  position: absolute; z-index: 3; pointer-events: none;
+  width: clamp(7rem, 17vw, 15rem); left: 0; top: 52%;
+  transform: translate(-58%, -50%) rotate(-9deg);
+  filter: drop-shadow(0 18px 22px rgba(42,36,32,.28));
+  transition: transform .6s cubic-bezier(.2,.7,.2,1);
+}
+.progetto--con-dettaglio:hover .progetto__dettaglio { transform: translate(-62%, -54%) rotate(-3deg); }
+@media (max-width: 640px) {
+  .progetto__dettaglio { width: 6.5rem; top: 38%; transform: translate(-30%, -50%) rotate(-9deg); }
+  .progetto--con-dettaglio:hover .progetto__dettaglio { transform: translate(-30%, -50%) rotate(-9deg); }
+}
+
+/* =====================================================================
+   SEZIONI DELLA SCHEDA (campo "sezioni" in content.js)
+   Il campo "tema" del progetto può cambiare i colori della scheda:
+   tema: { panna: "#...", inchiostro: "#...", "accento-1": "#..." }
+   ===================================================================== */
+.sz { padding: clamp(2.5rem, 6vw, 5rem) var(--margine); clear: both; }
+.sz__titolo { font-size: clamp(2rem, 1.3rem + 3.4vw, 4.2rem); margin-bottom: 1rem; }
+.sz__testo { max-width: 38rem; margin: 0 0 2rem; }
+.sz figcaption { font-size: .8rem; color: var(--grigio); margin-top: .6rem; }
+.sz img { display: block; max-width: 100%; }
+
+.sz--apertura { padding: 0; }
+.sz--apertura img { width: 100%; height: min(78vh, 46rem); object-fit: cover; object-position: 50% 30%; }
+.scheda .sz--apertura + .scheda__testa { padding-top: clamp(2rem, 4vw, 3.5rem); }
+.sz--testo .sz__testo { font-size: clamp(1.05rem, 1rem + .4vw, 1.3rem); max-width: 44rem; }
+
+/* Un miele, un colore */
+.colori { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(.8rem, 2vw, 1.4rem); padding-top: clamp(4rem, 9vw, 7rem); }
+.colore {
+  margin: 0; position: relative; background: var(--c); color: var(--t);
+  border-radius: 999px 999px var(--raggio) var(--raggio);
+  padding: clamp(7rem, 15vw, 12rem) 1.2rem 1.6rem; text-align: center; min-height: 100%;
+}
+.colore:nth-child(even) { margin-top: clamp(1.5rem, 4vw, 3.5rem); }
+.colore__oggetto {
+  position: absolute; left: 50%; top: 0; width: 82%;
+  transform: translate(-50%, -38%) rotate(var(--r, -4deg));
+  filter: drop-shadow(0 16px 18px rgba(0,0,0,.25));
+  transition: transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.colore:nth-child(2) .colore__oggetto { --r: 5deg; }
+.colore:nth-child(3) .colore__oggetto { --r: -2deg; }
+.colore:nth-child(4) .colore__oggetto { --r: 6deg; }
+.colore:hover .colore__oggetto { transform: translate(-50%, -46%) rotate(0deg); }
+.colore figcaption { color: inherit; margin: 0; font-size: inherit; }
+.colore__nome { display: block; font-family: var(--font-corsivo); font-style: italic; font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.2rem); line-height: 1.1; }
+.colore__nome em { color: inherit; }
+.colore__nota { display: block; font-size: .82rem; margin-top: .6rem; opacity: .9; line-height: 1.45; }
+
+/* Collage di oggetti scontornati su fondo colorato */
+.sz--collage {
+  position: relative; overflow: hidden; background: var(--c); color: var(--panna);
+  margin: clamp(1rem, 3vw, 2rem) var(--margine); border-radius: calc(var(--raggio) * 2);
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.2rem, 4vw, 4rem) clamp(3rem, 6vw, 5rem);
+}
+.sz--collage .sz__testo { color: color-mix(in srgb, var(--panna) 85%, transparent); }
+.sz--collage em { color: var(--accento-3); }
+.sz--collage figcaption { color: color-mix(in srgb, var(--panna) 75%, transparent); text-align: center; }
+.volo { position: absolute; inset: 8% 0 auto 0; width: 100%; height: 60%; pointer-events: none; }
+.volo path { fill: none; stroke: color-mix(in srgb, var(--panna) 45%, transparent); stroke-width: 2; stroke-dasharray: 6 10; vector-effect: non-scaling-stroke; }
+.collage__testa { position: relative; max-width: 40rem; }
+.collage {
+  position: relative; display: grid; grid-template-columns: repeat(12, 1fr);
+  align-items: end; gap: clamp(1rem, 3vw, 2.5rem) clamp(.5rem, 2vw, 1.5rem); margin-top: 1rem;
+}
+.pezzo { margin: 0; }
+.pezzo img { width: 100%; filter: drop-shadow(0 22px 24px rgba(0,0,0,.3)); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.pezzo:hover img { transform: translateY(-8px) rotate(var(--r, 0deg)); }
+.pezzo--1 { grid-column: 1 / span 4; grid-row: 1 / span 2; }
+.pezzo--2 { grid-column: 5 / span 4; grid-row: 1; align-self: center; }
+.pezzo--3 { grid-column: 10 / span 3; grid-row: 1; }
+.pezzo--4 { grid-column: 5 / span 3; grid-row: 2; }
+.pezzo--5 { grid-column: 8 / span 2; grid-row: 2; }
+.pezzo--6 { grid-column: 10 / span 3; grid-row: 2; }
+.pezzo--2 img { transform: rotate(-5deg); }
+.pezzo--4 img { transform: rotate(6deg); }
+
+/* Coppia di immagini sfalsate */
+.coppia { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 3vw, 2.5rem); align-items: start; }
+.coppia figure { margin: 0; }
+.coppia figure:nth-child(2) { margin-top: clamp(3rem, 10vw, 8rem); }
+.coppia img, .sz--immagine img { width: 100%; border-radius: calc(var(--raggio) * .6); }
+.sz--immagine figure { margin: 0; }
+
+@media (max-width: 760px) {
+  .colori { grid-template-columns: 1fr 1fr; row-gap: clamp(6rem, 22vw, 9rem); }
+  .collage { grid-template-columns: repeat(6, 1fr); }
+  .pezzo--1 { grid-column: 1 / span 4; grid-row: 1; }
+  .pezzo--2 { grid-column: 2 / span 5; grid-row: 2; }
+  .pezzo--3 { grid-column: 1 / span 3; grid-row: 3; }
+  .pezzo--4 { grid-column: 4 / span 3; grid-row: 3; }
+  .pezzo--5 { grid-column: 1 / span 2; grid-row: 4; }
+  .pezzo--6 { grid-column: 3 / span 4; grid-row: 4; }
+  .sz--collage { margin-inline: .6rem; }
+}
+.sz--stretta figure { max-width: 30rem; margin: 0 auto; }
