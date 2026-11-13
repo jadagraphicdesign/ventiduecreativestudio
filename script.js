@@ -50,7 +50,9 @@
     el.innerHTML = formatta(S[el.dataset.campo]);
   });
 
-  if (S.nomeBreve) {
+  if (S.logo) {
+    $(".testata__nome").innerHTML = `<img class="testata__logo" src="${sicuro(S.logo)}" alt="${sicuro(S.nome)}">`;
+  } else if (S.nomeBreve) {
     $(".testata__nome").innerHTML = `<span class="nome-lungo">${sicuro(S.nome)}</span><span class="nome-breve">${sicuro(S.nomeBreve)}</span>`;
   }
 
@@ -198,7 +200,7 @@
           <svg class="volo" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 320 C 180 120, 320 380, 480 200 S 760 40, 1020 140"/></svg>
           <div class="collage__testa">${titolo}${testo}</div>
           <div class="collage">${z.elementi.map((e, k) => `
-            <figure class="pezzo pezzo--${k + 1}">${img(e.immagine, e.didascalia)}${e.didascalia ? `<figcaption>${formatta(e.didascalia)}</figcaption>` : ""}</figure>`).join("")}</div></section>`;
+            <figure class="pezzo pezzo--${k + 1}${e.sfuma ? " pezzo--sfumato" : ""}">${img(e.immagine, e.didascalia)}${e.didascalia ? `<figcaption>${formatta(e.didascalia)}</figcaption>` : ""}</figure>`).join("")}</div></section>`;
       case "coppia":
         return `<section class="sz sz--coppia">${titolo}${testo}<div class="coppia">${z.immagini.map((g) => `
             <figure>${img(g.immagine, g.didascalia)}${g.didascalia ? `<figcaption>${formatta(g.didascalia)}</figcaption>` : ""}</figure>`).join("")}</div></section>`;

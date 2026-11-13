@@ -24,7 +24,8 @@ const SITO = {
 
   /* ---------- DATI GENERALI ---------- */
   nome: "Ventidue Creative Studio",
-  nomeBreve: "Ventidue",                 // versione corta, usata in alto sui telefoni                 // compare in alto a sinistra e nel footer
+  nomeBreve: "Ventidue",                 // versione corta, usata in alto sui telefoni (se non c'è il logo)
+  logo: "img/logo-ventidue.png",         // logo in alto a sinistra (lascia "" per mostrare il nome scritto)                 // compare in alto a sinistra e nel footer
   ruolo: "Graphic designer · Brand identity, packaging e contenuti social",
   titoloPagina: "Ventidue Creative Studio — Graphic design a Modena | Brand identity e packaging", // testo della scheda del browser
   descrizionePagina: "Ventidue Creative Studio, lo studio di graphic design di Giada Al Zeer a Modena: brand identity, packaging, campagne e contenuti social per brand che vogliono farsi ricordare. Guarda i progetti.",
@@ -171,9 +172,11 @@ const SITO = {
             { immagine: "img/progetti/meriggio/scontornati/shopper-juta.webp", didascalia: "Shopper in juta" },
             { immagine: "img/progetti/meriggio/scontornati/tazze.webp", didascalia: "Tazze “drink me” e “it’s always tea time”" },
             { immagine: "img/progetti/meriggio/scontornati/candela.webp", didascalia: "Candela in cera d’api" },
-            { immagine: "img/progetti/meriggio/scontornati/saponetta.webp", didascalia: "Saponetta naturale" },
+            { immagine: "img/progetti/meriggio/scontornati/saponetta-rosa.webp", didascalia: "Saponetta alla rosa canina" },
+            { immagine: "img/progetti/meriggio/scontornati/saponetta-rosmarino.webp", didascalia: "Sapone miele e rosmarino" },
             { immagine: "img/progetti/meriggio/scontornati/shopper-fiori.webp", didascalia: "Shopper in carta" },
             { immagine: "img/progetti/meriggio/scontornati/scatola.webp", didascalia: "Scatola regalo" },
+            { immagine: "img/progetti/meriggio/scontornati/polo.webp", didascalia: "Polo per lo staff del punto vendita", sfuma: true },
           ],
         },
         {

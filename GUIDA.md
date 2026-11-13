@@ -88,3 +88,8 @@ Altri due campi facoltativi:
 - `tema`: cambia i colori della scheda, per esempio `{ "accento-1": "#2F5654" }`.
 
 Per scontornare un'immagine puoi usare "Rimuovi sfondo" di Canva o di Photoshop: esportala in PNG trasparente e mettila in `img/progetti/nome-progetto/scontornati/`.
+
+## Logo e piccoli extra
+- `logo` in `content.js`: è il logo in alto a sinistra. Se lo lasci vuoto (`""`) al suo posto compare il nome scritto.
+- La favicon, cioè l'iconcina nella scheda del browser, è `img/favicon.png`.
+- `sfuma: true` su un elemento del collage: sfuma il bordo inferiore dell'immagine. Serve per le foto tagliate, come la polo.
