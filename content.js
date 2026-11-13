@@ -409,7 +409,7 @@ const SITO = {
     ],
     // Tappe del percorso (facoltative): anno, testo e una foto
     tappe: [
-      { anno: "2026", testo: "Laurea in *Graphic Design* a Roma, con la tesi «Amal — L’immagine tra viralità e memoria»", foto: "img/foto-laurea.jpg" },
+      { anno: "2026", testo: "Laurea in *Graphic Design* a Roma, con la tesi «Amal — L’immagine tra viralità e memoria»", foto: "img/foto-laurea-scontornata.webp", scontornata: true },
     ],
     // Frase grande in evidenza (puoi lasciarla vuota: "")
     citazione: "Ogni brand ha già una *voce*: io la rendo visibile.",

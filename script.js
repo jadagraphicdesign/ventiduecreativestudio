@@ -225,8 +225,10 @@
         <h2 class="sezione__titolo">${formatta(C.titolo)}</h2>
         ${(C.paragrafi || []).map((t) => `<p>${formatta(t)}</p>`).join("")}
         ${(C.tappe || []).map((t) => `
-        <div class="tappa">
-          ${t.foto ? `<img class="tappa__foto" src="${sicuro(t.foto)}" alt="" loading="lazy">` : ""}
+        <div class="tappa${t.scontornata ? " tappa--scontornata" : ""}">
+          ${t.foto ? (t.scontornata
+            ? `<span class="tappa__cerchio"><img src="${sicuro(t.foto)}" alt="Giada il giorno della laurea" loading="lazy"></span>`
+            : `<img class="tappa__foto" src="${sicuro(t.foto)}" alt="" loading="lazy">`) : ""}
           <div><span class="tappa__anno">${sicuro(t.anno)}</span><p class="tappa__testo">${formatta(t.testo)}</p></div>
         </div>`).join("")}
         <ul class="competenze">

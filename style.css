@@ -810,3 +810,17 @@ h1 em, h2 em, h3 em, .sz__titolo em, .scheda__titolo em, .caso__titolo em { font
 .tappa__foto { width: 5.2rem; height: 5.2rem; border-radius: 50%; object-fit: cover; object-position: 50% 50%; flex: none; border: 3px solid var(--panna); }
 .tappa__anno { font-family: var(--font-corsivo); font-style: italic; font-size: 1.6rem; color: var(--accento-1); line-height: 1; }
 .tappa__testo { margin: .3rem 0 0 !important; font-size: .92rem; line-height: 1.45; }
+
+/* Foto scontornata che "esce" dal cerchio: la corona supera il bordo */
+.tappa--scontornata { margin-top: 3.2rem; overflow: visible; }
+.tappa__cerchio {
+  position: relative; flex: none; width: 6.4rem; height: 6.4rem; border-radius: 50%;
+}
+/* la parte bassa della foto resta dentro il cerchio, la corona può uscire */
+.tappa__cerchio::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--accento-4); }
+.tappa__cerchio img {
+  position: absolute; left: 50%; bottom: 0; width: 118%; transform: translateX(-50%);
+  clip-path: inset(-60% 0 0 0 round 0 0 50% 50%);
+  transition: transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.tappa:hover .tappa__cerchio img { transform: translateX(-50%) translateY(-4px) rotate(-3deg); }
