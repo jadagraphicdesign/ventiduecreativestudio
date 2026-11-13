@@ -403,9 +403,13 @@ const SITO = {
     testoAlternativo: "Foto di Giada Al Zeer",
     // Ogni frase tra virgolette è un paragrafo separato
     paragrafi: [
-      "Sono Giada Al Zeer, graphic designer a Modena e fondatrice di Ventidue Creative Studio. Mi occupo di brand identity e packaging design, e accompagno i brand anche dopo il logo: campagne, materiali stampati e contenuti per Instagram.",
+      "Sono Giada Al Zeer, graphic designer a Modena e fondatrice di Ventidue Creative Studio. Mi sono laureata in Graphic Design a Roma nel 2026 con *Amal*, una tesi su come il design può restituire tempo e attenzione alle immagini. Mi occupo di brand identity e packaging design, e accompagno i brand anche dopo il logo: campagne, materiali stampati e contenuti per Instagram.",
       "Parto sempre dalla storia di chi ho davanti: cosa vuole dire e a chi. Da lì costruisco un sistema visivo coerente, con colori, tipografia e illustrazioni che si riconoscono su un’etichetta come in un post.",
       "Oggi sto approfondendo social media marketing, videomaking e contenuti UGC, per dare ai brand che seguo un’immagine curata anche sui social.",
+    ],
+    // Tappe del percorso (facoltative): anno, testo e una foto
+    tappe: [
+      { anno: "2026", testo: "Laurea in *Graphic Design* a Roma, con la tesi «Amal — L’immagine tra viralità e memoria»", foto: "img/foto-laurea.jpg" },
     ],
     // Frase grande in evidenza (puoi lasciarla vuota: "")
     citazione: "Ogni brand ha già una *voce*: io la rendo visibile.",

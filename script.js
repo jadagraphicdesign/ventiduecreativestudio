@@ -224,6 +224,11 @@
       <div class="chi-sono__testo rivela">
         <h2 class="sezione__titolo">${formatta(C.titolo)}</h2>
         ${(C.paragrafi || []).map((t) => `<p>${formatta(t)}</p>`).join("")}
+        ${(C.tappe || []).map((t) => `
+        <div class="tappa">
+          ${t.foto ? `<img class="tappa__foto" src="${sicuro(t.foto)}" alt="" loading="lazy">` : ""}
+          <div><span class="tappa__anno">${sicuro(t.anno)}</span><p class="tappa__testo">${formatta(t.testo)}</p></div>
+        </div>`).join("")}
         <ul class="competenze">
           ${(C.competenze || []).map((c, i) => `<li class="chip chip--${coloriEtichette[i % 4]}">${sicuro(c)}</li>`).join("")}
         </ul>
