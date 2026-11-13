@@ -396,7 +396,10 @@ const SITO = {
   /* ---------- CHI SONO ---------- */
   chiSono: {
     titolo: "Piacere, sono *Giada*",
-    foto: "img/foto-chi-sono.svg",
+    foto: "img/foto-chi-sono.jpg",
+    // Seconda foto più personale, mostrata come una polaroid inclinata (lascia "" per toglierla)
+    polaroid: "img/foto-polaroid.jpg",
+    didascaliaPolaroid: "fuori orario ☀️",
     testoAlternativo: "Foto di Giada Al Zeer",
     // Ogni frase tra virgolette è un paragrafo separato
     paragrafi: [

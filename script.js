@@ -219,6 +219,7 @@
     <div class="chi-sono__griglia">
       <figure class="chi-sono__foto rivela">
         ${immagine(C.foto, C.testoAlternativo, "chi-sono__img")}
+        ${C.polaroid ? `<span class="polaroid"><img src="${sicuro(C.polaroid)}" alt="Giada fuori dallo studio" loading="lazy">${C.didascaliaPolaroid ? `<span class="polaroid__testo">${sicuro(C.didascaliaPolaroid)}</span>` : ""}</span>` : ""}
       </figure>
       <div class="chi-sono__testo rivela">
         <h2 class="sezione__titolo">${formatta(C.titolo)}</h2>

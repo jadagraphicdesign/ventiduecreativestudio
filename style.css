@@ -792,3 +792,15 @@ h1 em, h2 em, h3 em, .sz__titolo em, .scheda__titolo em, .caso__titolo em { font
 .elenco { list-style: none; padding: 0; margin: 0 0 2.2rem; display: flex; flex-wrap: wrap; gap: .5rem; }
 .elenco li { border: 1px solid var(--inchiostro); border-radius: 999px; padding: .45em 1em; font-size: .85rem; }
 .elenco li:nth-child(4n+1) { background: var(--accento-3); border-color: var(--accento-3); }
+
+/* Polaroid in "Chi sono" */
+.polaroid {
+  position: absolute; z-index: 3; right: -12%; bottom: -10%; width: 46%;
+  background: #fff; padding: .55rem .55rem 0; box-shadow: 0 18px 30px -12px rgba(51,32,42,.4);
+  transform: rotate(6deg); transition: transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.polaroid img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: 50% 35%; display: block; }
+.polaroid__testo { display: block; text-align: center; font-family: var(--font-corsivo); font-style: italic; font-size: 1rem; color: var(--inchiostro); padding: .5rem 0 .65rem; }
+.chi-sono__foto:hover .polaroid { transform: rotate(-2deg) translateY(-8px) scale(1.04); }
+.chi-sono__foto { margin-bottom: 3rem; }
+@media (max-width: 640px) { .polaroid { right: -6%; bottom: -8%; width: 48%; padding: .4rem .4rem 0; } .polaroid__testo { font-size: .85rem; } }
