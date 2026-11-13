@@ -431,7 +431,7 @@ const SITO = {
   contatti: {
     titolo: "Lavoriamo *insieme*?",
     testo: "Lavoro a Modena. Hai un brand da far nascere, un packaging da progettare o un profilo Instagram da rinnovare? Raccontami il tuo progetto: troviamo insieme l’immagine giusta.",
-    email: "[INSERISCI EMAIL]",              // es. "ciao@tuonome.it"
+    email: "ciao@ventiduecreativestudio.com",              // es. "ciao@tuonome.it"
     instagram: "[INSERISCI USERNAME]",       // solo il nome, senza @ (es. "tuonome.design")
     // Altri link facoltativi: aggiungi o togli righe
     altriLink: [
