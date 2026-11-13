@@ -257,12 +257,12 @@
           ? `<a class="contatto__valore" href="mailto:${sicuro(K.email)}">${sicuro(K.email)}</a>`
           : `<span class="contatto__valore">${formatta(K.email)}</span>`}
       </div>
-      <div class="contatto">
+      ${K.instagram ? `<div class="contatto">
         <span class="contatto__tipo">Instagram</span>
         ${igOk
           ? `<a class="contatto__valore" href="https://www.instagram.com/${encodeURIComponent(ig)}/" target="_blank" rel="noopener">@${sicuro(ig)}</a>`
           : `<span class="contatto__valore">${formatta(K.instagram)}</span>`}
-      </div>
+      </div>` : ""}
     </div>
     ${altri ? `<div class="contatti__altri">${altri}</div>` : ""}
     ${emailOk ? `<a class="bottone bottone--chiaro" href="mailto:${sicuro(K.email)}">Scrivimi una email <span aria-hidden="true">→</span></a>` : ""}`;

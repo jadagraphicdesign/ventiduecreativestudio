@@ -432,7 +432,7 @@ const SITO = {
     titolo: "Lavoriamo *insieme*?",
     testo: "Lavoro a Modena. Hai un brand da far nascere, un packaging da progettare o un profilo Instagram da rinnovare? Raccontami il tuo progetto: troviamo insieme l’immagine giusta.",
     email: "ciao@ventiduecreativestudio.com",              // es. "ciao@tuonome.it"
-    instagram: "[INSERISCI USERNAME]",       // solo il nome, senza @ (es. "tuonome.design")
+    instagram: "",                           // quando avrai la pagina dello studio: solo il nome, senza @ (es. "ventiduecreativestudio"). Vuoto = non compare
     // Altri link facoltativi: aggiungi o togli righe
     altriLink: [
       // { nome: "Behance", link: "https://www.behance.net/..." },

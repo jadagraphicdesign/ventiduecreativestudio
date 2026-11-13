@@ -824,3 +824,4 @@ h1 em, h2 em, h3 em, .sz__titolo em, .scheda__titolo em, .caso__titolo em { font
   transition: transform .5s cubic-bezier(.2,.7,.2,1);
 }
 .tappa:hover .tappa__cerchio img { transform: translateX(-50%) translateY(-4px) rotate(-3deg); }
+.contatti__link:has(.contatto:only-child) { grid-template-columns: 1fr; }
