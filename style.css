@@ -503,12 +503,11 @@ button.progetto__link { background: none; border: 0; border-bottom: 1.5px solid 
 .pezzo--1 { grid-column: 1 / span 4; grid-row: 1 / span 2; }
 .pezzo--2 { grid-column: 5 / span 4; grid-row: 1; align-self: center; }
 .pezzo--3 { grid-column: 10 / span 3; grid-row: 1; }
-.pezzo--4 { grid-column: 5 / span 3; grid-row: 2; }
-.pezzo--5 { grid-column: 8 / span 3; grid-row: 2; }
-.pezzo--6 { grid-column: 11 / span 2; grid-row: 2; }
-.pezzo--7 { grid-column: 2 / span 4; grid-row: 3; }
-.pezzo--8 { grid-column: 8 / span 3; grid-row: 3; }
-.pezzo--sfumato img { -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent); mask-image: linear-gradient(to bottom, #000 70%, transparent); filter: none; }
+.pezzo--4 { grid-column: 5 / span 4; grid-row: 2; }
+.pezzo--5 { grid-column: 10 / span 2; grid-row: 2; }
+.pezzo--6 { grid-column: 2 / span 4; grid-row: 3; }
+.pezzo--7 { grid-column: 6 / span 3; grid-row: 3; }
+.pezzo--altro { grid-column: 9 / span 3; grid-row: 3; }
 .pezzo--2 img { transform: rotate(-5deg); }
 .pezzo--4 img { transform: rotate(6deg); }
 .pezzo--5 img { transform: rotate(-4deg); }
@@ -527,10 +526,10 @@ button.progetto__link { background: none; border: 0; border-bottom: 1.5px solid 
   .pezzo--2 { grid-column: 2 / span 5; grid-row: 2; }
   .pezzo--3 { grid-column: 1 / span 3; grid-row: 3; }
   .pezzo--4 { grid-column: 4 / span 3; grid-row: 3; }
-  .pezzo--5 { grid-column: 1 / span 4; grid-row: 4; }
-  .pezzo--6 { grid-column: 5 / span 2; grid-row: 4; }
+  .pezzo--5 { grid-column: 1 / span 2; grid-row: 4; }
+  .pezzo--6 { grid-column: 3 / span 4; grid-row: 4; }
   .pezzo--7 { grid-column: 1 / span 3; grid-row: 5; }
-  .pezzo--8 { grid-column: 4 / span 3; grid-row: 5; }
+  .pezzo--altro { grid-column: 4 / span 3; grid-row: 5; }
   .sz--collage { margin-inline: .6rem; }
 }
 .sz--stretta figure { max-width: 30rem; margin: 0 auto; }
@@ -769,3 +768,27 @@ h1 em, h2 em, h3 em, .sz__titolo em, .scheda__titolo em, .caso__titolo em { font
 .piede { align-items: center; }
 .piede__logo img { height: 3.6rem; width: auto; display: block; }
 @media (max-width: 640px) { .contatti__faccina { width: 4.5rem; top: 1.4rem; right: 1.2rem; } .piede__logo { width: 100%; } }
+
+/* Meriggio: prodotti che salgono e si ingrandiscono */
+.pezzo img { transition: transform .5s cubic-bezier(.2,.7,.2,1), filter .5s ease; }
+.pezzo:hover img { transform: translateY(-10px) scale(1.1) rotate(var(--r, 0deg)); filter: drop-shadow(0 32px 30px rgba(0,0,0,.35)); }
+.pezzo--sfumato:hover img { filter: none; }
+.pezzo:hover { position: relative; z-index: 2; }
+.colore:hover .colore__oggetto { transform: translate(-50%, -48%) rotate(0deg) scale(1.1); }
+
+/* Tessera "e molto altro" */
+.pezzo--altro {
+  align-self: center; justify-self: center; width: min(100%, 11rem); aspect-ratio: 1; border-radius: 50%;
+  display: grid; place-items: center; align-content: center; gap: .2rem; text-align: center; text-decoration: none;
+  border: 1.5px dashed color-mix(in srgb, var(--panna) 60%, transparent); color: var(--panna);
+  font-family: var(--font-corsivo); font-size: 1.35rem; line-height: 1.1; padding: 1rem;
+  transition: background .4s ease, transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.pezzo--altro em { color: var(--accento-3); }
+.pezzo__piu { font-family: var(--font-testo); font-size: 1.8rem; line-height: 1; }
+.pezzo--altro:hover { background: color-mix(in srgb, var(--panna) 12%, transparent); transform: rotate(-8deg) scale(1.08); }
+
+/* Elenco di tutto quello che c'è nel manual */
+.elenco { list-style: none; padding: 0; margin: 0 0 2.2rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+.elenco li { border: 1px solid var(--inchiostro); border-radius: 999px; padding: .45em 1em; font-size: .85rem; }
+.elenco li:nth-child(4n+1) { background: var(--accento-3); border-color: var(--accento-3); }

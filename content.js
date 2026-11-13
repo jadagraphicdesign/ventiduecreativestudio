@@ -288,12 +288,21 @@ const SITO = {
             { immagine: "img/progetti/meriggio/scontornati/shopper-juta.webp", didascalia: "Shopper in juta" },
             { immagine: "img/progetti/meriggio/scontornati/tazze.webp", didascalia: "Tazze “drink me” e “it’s always tea time”" },
             { immagine: "img/progetti/meriggio/scontornati/candela.webp", didascalia: "Candela in cera d’api" },
-            { immagine: "img/progetti/meriggio/scontornati/saponetta-rosa.webp", didascalia: "Saponetta alla rosa canina" },
             { immagine: "img/progetti/meriggio/scontornati/saponetta-rosmarino.webp", didascalia: "Sapone miele e rosmarino" },
             { immagine: "img/progetti/meriggio/scontornati/shopper-fiori.webp", didascalia: "Shopper in carta" },
             { immagine: "img/progetti/meriggio/scontornati/scatola.webp", didascalia: "Scatola regalo" },
             { immagine: "img/progetti/meriggio/scontornati/polo.webp", didascalia: "Polo per lo staff del punto vendita", sfuma: true },
           ],
+          // Ultima tessera del collage: rimanda al brand manual
+          altro: { testo: "e molto *altro*", link: "docs/brand-manual-al-meriggio-dor.pdf" },
+        },
+        {
+          tipo: "elenco",
+          titolo: "E non finisce *qui*",
+          testo: "Il brand manual di 68 pagine raccoglie tutto il sistema, con le regole per usarlo. Qui sotto trovi solo una parte.",
+          voci: ["Pittogramma e logotipo", "Area di rispetto e versioni", "Texture floreali", "Icone", "Linea miele", "Linea saponette", "Linea candele", "Biglietto da visita", "Carta intestata", "Busta", "Depliant", "Poster e affissioni", "Social media", "Segnalibri", "Scatola regalo", "Sacchetti di carta", "Tuta da apicoltore", "Tazze e cappellino", "Insegna in legno", "Supporti espositivi"],
+          link: "docs/brand-manual-al-meriggio-dor.pdf",
+          testoLink: "Sfoglia tutto il brand manual",
         },
         {
           tipo: "coppia",

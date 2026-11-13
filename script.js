@@ -322,6 +322,10 @@
       case "fine":
         return `<section class="sz sz--fine"><p class="fine__testo">${formatta(z.testo)}</p>${z.nota ? `<p class="fine__nota">${formatta(z.nota)}</p>` : ""}
           <button class="bottone fine__torna">Torna ai progetti</button></section>`;
+      case "elenco":
+        return `<section class="sz sz--elenco">${titolo}${testo}
+          <ul class="elenco">${z.voci.map((v) => `<li>${formatta(v)}</li>`).join("")}</ul>
+          ${z.link ? `<a class="bottone" href="${sicuro(z.link)}" target="_blank" rel="noopener">${sicuro(z.testoLink || "Scopri di più")} <span aria-hidden="true">↗</span></a>` : ""}</section>`;
       case "apertura":
         return `<section class="sz sz--apertura">${img(z.immagine, z.didascalia)}</section>`;
       case "testo":
@@ -338,7 +342,8 @@
           <svg class="volo" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 320 C 180 120, 320 380, 480 200 S 760 40, 1020 140"/></svg>
           <div class="collage__testa">${titolo}${testo}</div>
           <div class="collage">${z.elementi.map((e, k) => `
-            <figure class="pezzo pezzo--${k + 1}${e.sfuma ? " pezzo--sfumato" : ""}">${img(e.immagine, e.didascalia)}${e.didascalia ? `<figcaption>${formatta(e.didascalia)}</figcaption>` : ""}</figure>`).join("")}</div></section>`;
+            <figure class="pezzo pezzo--${k + 1}${e.sfuma ? " pezzo--sfumato" : ""}">${img(e.immagine, e.didascalia)}${e.didascalia ? `<figcaption>${formatta(e.didascalia)}</figcaption>` : ""}</figure>`).join("")}
+            ${z.altro ? `<a class="pezzo pezzo--altro" href="${sicuro(z.altro.link)}" target="_blank" rel="noopener"><span>${formatta(z.altro.testo)}</span><span class="pezzo__piu" aria-hidden="true">+</span></a>` : ""}</div></section>`;
       case "coppia":
         return `<section class="sz sz--coppia">${titolo}${testo}<div class="coppia">${z.immagini.map((g) => `
             <figure>${img(g.immagine, g.didascalia)}${g.didascalia ? `<figcaption>${formatta(g.didascalia)}</figcaption>` : ""}</figure>`).join("")}</div></section>`;
