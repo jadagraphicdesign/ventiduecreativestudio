@@ -341,6 +341,44 @@ const SITO = {
   ],
 
 
+  /* ---------- SOCIAL ----------
+     Ogni blocco in "progetti" è un lavoro social (un cliente o una rubrica).
+     • video: i Reel (file .mp4 in video/social/ + copertina .jpg in img/social/)
+       Il primo, il secondo e il terzo video vengono mostrati in tre telefoni:
+       quello centrale è più grande.
+     • caroselli: facoltativi. Ogni carosello è un elenco di immagini (le slide),
+       in formato 4:5 o quadrato, da mettere in img/social/.
+     • strategia: i punti numerati che spiegano il ragionamento.
+  ------------------------------------------------------------------- */
+  social: {
+    titolo: "Contenuti *social*",
+    intro: "Reel, caroselli e rubriche pensati come un sistema: un formato riconoscibile, un messaggio chiaro nei primi secondi e una grafica che rende il profilo coerente a colpo d’occhio.",
+
+    progetti: [
+      {
+        titolo: "Chiedilo alla *Ludmi*",
+        tipo: "Reel e video",
+        cliente: "Rubrica per una personal trainer",
+        descrizione: "Una rubrica di domande, dubbi e curiosità sull’allenamento: la trainer risponde in camera, in palestra, con un linguaggio diretto.",
+        video: [
+          { file: "video/social/allenamento-dopo-gravidanza.mp4", copertina: "img/social/allenamento-dopo-gravidanza.jpg", titolo: "Riprendere l’allenamento dopo la gravidanza" },
+          { file: "video/social/chiedilo-alla-ludmi.mp4", copertina: "img/social/chiedilo-alla-ludmi.jpg", titolo: "Chiedilo alla Ludmi — apertura della rubrica" },
+          { file: "video/social/la-scheda-e-solo-inizio.mp4", copertina: "img/social/la-scheda-e-solo-inizio.jpg", titolo: "La scheda è solo l’inizio" },
+        ],
+        strategia: [
+          { titolo: "Una rubrica, non un video", testo: "Un nome fisso e una copertina sempre riconoscibile trasformano i singoli Reel in un appuntamento: chi segue sa cosa aspettarsi e torna." },
+          { titolo: "Il gancio nei primi secondi", testo: "Il tema è scritto subito sul video, in etichette grandi e leggibili anche senza audio: chi scorre capisce in un attimo di cosa si parla." },
+          { titolo: "Competenza prima della vendita", testo: "Format parlato, in palestra, su dubbi reali delle clienti: contenuti educativi che costruiscono fiducia e mostrano chi c’è dietro il servizio." },
+          { titolo: "Un sistema grafico coerente", testo: "Etichette rosa e blu, stesso carattere, stessi segni grafici: il feed resta ordinato e ogni contenuto si riconosce come parte della rubrica." },
+        ],
+        caroselli: [
+          // { titolo: "Titolo del carosello", slide: ["img/social/carosello-1-1.jpg", "img/social/carosello-1-2.jpg"] },
+        ],
+      },
+    ],
+  },
+
+
   /* ---------- CHI SONO ---------- */
   chiSono: {
     titolo: "Piacere, sono *Giada*",

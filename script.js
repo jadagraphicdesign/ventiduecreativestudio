@@ -119,11 +119,83 @@
     })
     .join("");
 
+  /* ---------- SOCIAL ---------- */
+  const SO = S.social;
+  if (SO && (SO.progetti || []).length) {
+    $("#social").innerHTML = `
+      <div class="social__interno">
+        <div class="sezione__testa">
+          <p class="sezione__numero">02 — Social</p>
+          <h2 class="sezione__titolo">${formatta(SO.titolo)}</h2>
+          ${SO.intro ? `<p class="sezione__intro">${formatta(SO.intro)}</p>` : ""}
+        </div>
+        ${SO.progetti.filter((c) => !c.nascosto).map((c) => `
+        <article class="caso">
+          <header class="caso__testa rivela">
+            <span class="etichetta etichetta--c2">${sicuro(c.tipo)}</span>
+            <h3 class="caso__titolo">${formatta(c.titolo)}</h3>
+            ${c.cliente ? `<p class="progetto__meta">${formatta(c.cliente)}</p>` : ""}
+            <p class="caso__desc">${formatta(c.descrizione)}</p>
+          </header>
+          ${(c.video || []).length ? `<div class="telefoni">${c.video.map((v, k) => `
+            <figure class="telefono telefono--${k + 1} rivela">
+              <div class="telefono__schermo">
+                <video muted loop playsinline preload="none" poster="${sicuro(v.copertina)}" data-src="${sicuro(v.file)}" aria-label="${sicuro(v.titolo)}"></video>
+                <button class="telefono__audio" aria-label="Attiva l'audio" aria-pressed="false"><span class="ico-muto">🔇</span><span class="ico-audio">🔊</span></button>
+              </div>
+              <figcaption>${formatta(v.titolo)}</figcaption>
+            </figure>`).join("")}</div>` : ""}
+          ${(c.strategia || []).length ? `<div class="strategia rivela"><p class="strategia__etichetta">La strategia</p><ol>${c.strategia.map((x) => `
+            <li><h4>${formatta(x.titolo)}</h4><p>${formatta(x.testo)}</p></li>`).join("")}</ol></div>` : ""}
+          ${(c.caroselli || []).filter((k) => k && (k.slide || []).length).map((k) => `
+            <div class="carosello rivela">
+              <p class="strategia__etichetta">${formatta(k.titolo || "Carosello")}</p>
+              <div class="carosello__cornice"><div class="carosello__binario">${k.slide.map((sl, n) => `<img src="${sicuro(sl)}" alt="${sicuro((k.titolo || "Carosello") + " — slide " + (n + 1))}" loading="lazy">`).join("")}</div></div>
+              <div class="carosello__puntini">${k.slide.map((_, n) => `<span class="${n ? "" : "attivo"}"></span>`).join("")}</div>
+            </div>`).join("")}
+        </article>`).join("")}
+      </div>`;
+
+    // Video: partono senza audio quando sono visibili, si fermano quando escono
+    const video = [...document.querySelectorAll(".telefono video")];
+    const carica = (v) => { if (!v.src) { v.src = v.dataset.src; } };
+    const fermo = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if ("IntersectionObserver" in window && !fermo) {
+      const ov = new IntersectionObserver((voci) => voci.forEach((x) => {
+        const v = x.target;
+        if (x.isIntersecting) { carica(v); v.play().catch(() => {}); } else { v.pause(); }
+      }), { threshold: 0.5 });
+      video.forEach((v) => ov.observe(v));
+    }
+    // Tocco sul telefono: audio sì/no (uno alla volta)
+    document.querySelectorAll(".telefono__schermo").forEach((sc) => {
+      sc.addEventListener("click", () => {
+        const v = sc.querySelector("video"); const b = sc.querySelector(".telefono__audio");
+        carica(v);
+        const accendi = v.muted || v.paused;
+        video.forEach((a) => { if (a !== v) { a.muted = true; a.closest(".telefono").classList.remove("con-audio"); } });
+        v.muted = !accendi; if (accendi) { v.currentTime = v.paused ? v.currentTime : v.currentTime; v.play().catch(() => {}); }
+        sc.closest(".telefono").classList.toggle("con-audio", accendi);
+        b.setAttribute("aria-pressed", String(accendi));
+      });
+    });
+    // Caroselli: puntini che seguono lo scorrimento
+    document.querySelectorAll(".carosello").forEach((c) => {
+      const bin = c.querySelector(".carosello__cornice"); const pt = c.querySelectorAll(".carosello__puntini span");
+      bin.addEventListener("scroll", () => {
+        const i = Math.round(bin.scrollLeft / bin.clientWidth);
+        pt.forEach((p, n) => p.classList.toggle("attivo", n === i));
+      }, { passive: true });
+    });
+  } else {
+    $("#social").remove();
+  }
+
   /* ---------- CHI SONO ---------- */
   const C = S.chiSono;
   $("#chi-sono").innerHTML = `
     <div class="sezione__testa">
-      <p class="sezione__numero">02 — Chi sono</p>
+      <p class="sezione__numero">03 — Chi sono</p>
     </div>
     <div class="chi-sono__griglia">
       <figure class="chi-sono__foto rivela">
@@ -147,7 +219,7 @@
   const altri = (K.altriLink || []).map((l) => link(l.link, sicuro(l.nome) + ' <span aria-hidden="true">↗</span>')).join("");
 
   $("#contatti").innerHTML = `
-    <p class="sezione__numero">03 — Contatti</p>
+    <p class="sezione__numero">04 — Contatti</p>
     <h2 class="contatti__titolo">${formatta(K.titolo)}</h2>
     <p class="contatti__testo">${formatta(K.testo)}</p>
     <div class="contatti__link">

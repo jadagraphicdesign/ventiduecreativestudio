@@ -107,3 +107,11 @@ Altri tipi di sezione che puoi usare in `sezioni`:
 - `fine`: la chiusura del percorso, con il bottone "Torna ai progetti"
 
 Con `tema` puoi cambiare anche i caratteri della scheda, per esempio `"font-corsivo": "'EB Garamond', serif"`.
+
+## Sezione Social
+In `content.js`, dentro `social` → `progetti`, ogni blocco è un lavoro social:
+- `video`: i Reel. Il file `.mp4` va in `video/social/`, la copertina `.jpg` in `img/social/`. I primi tre compaiono dentro tre telefoni.
+- `strategia`: i punti numerati che spiegano il ragionamento.
+- `caroselli`: un elenco di slide in formato 4:5, da mettere in `img/social/`.
+
+**Video leggeri:** prima di caricare un video, esportalo in MP4 (H.264) a 720 px di larghezza e tienilo sotto i 5 MB. Un `.mov` preso dal telefono pesa 80-100 MB e rallenterebbe il sito.
