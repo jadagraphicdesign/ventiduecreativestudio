@@ -50,6 +50,10 @@
     el.innerHTML = formatta(S[el.dataset.campo]);
   });
 
+  if (S.nomeBreve) {
+    $(".testata__nome").innerHTML = `<span class="nome-lungo">${sicuro(S.nome)}</span><span class="nome-breve">${sicuro(S.nomeBreve)}</span>`;
+  }
+
   /* ---------- HOME ---------- */
   const H = S.home;
   const home = $("#home");

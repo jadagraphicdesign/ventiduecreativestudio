@@ -23,26 +23,27 @@
 const SITO = {
 
   /* ---------- DATI GENERALI ---------- */
-  nome: "Giada Al Zeer",                 // compare in alto a sinistra e nel footer
+  nome: "Ventidue Creative Studio",
+  nomeBreve: "Ventidue",                 // versione corta, usata in alto sui telefoni                 // compare in alto a sinistra e nel footer
   ruolo: "Graphic designer · Brand identity, packaging e contenuti social",
-  titoloPagina: "Giada Al Zeer — Graphic designer a Modena | Brand identity e packaging", // testo della scheda del browser
-  descrizionePagina: "Giada Al Zeer, graphic designer a Modena: brand identity, packaging, campagne e contenuti social per brand che vogliono farsi ricordare. Guarda i progetti.",
+  titoloPagina: "Ventidue Creative Studio — Graphic design a Modena | Brand identity e packaging", // testo della scheda del browser
+  descrizionePagina: "Ventidue Creative Studio, lo studio di graphic design di Giada Al Zeer a Modena: brand identity, packaging, campagne e contenuti social per brand che vogliono farsi ricordare. Guarda i progetti.",
 
 
   /* ---------- HOME ---------- */
   home: {
     // Piccola riga sopra il titolo
-    etichetta: "Giada Al Zeer · Graphic designer a Modena",
+    etichetta: "Ventidue Creative Studio · Graphic design a Modena",
 
     // La frase principale. Le parole tra *asterischi* diventano corsive e colorate.
     frase: "Brand identity, packaging e contenuti social che si fanno *ricordare*.",
 
     // Due righe di presentazione sotto la frase
-    sottotitolo: "Sono Giada, graphic designer. Costruisco identità visive complete: logo, packaging, campagne e contenuti per Instagram, perché un brand sia riconoscibile ovunque lo si incontri.",
+    sottotitolo: "Sono Giada Al Zeer e con Ventidue Creative Studio costruisco identità visive complete: logo, packaging, campagne e contenuti per Instagram, perché un brand sia riconoscibile ovunque lo si incontri.",
 
     // La tua foto o immagine personale (verticale, almeno 1200px di altezza)
     immagine: "img/foto-home.jpg",
-    testoAlternativo: "Ritratto di Giada Al Zeer",
+    testoAlternativo: "Giada Al Zeer, graphic designer e fondatrice di Ventidue Creative Studio",
 
     // "affiancata" = foto a destra e testo su sfondo panna (più leggibile)
     // "sfondo"     = foto a tutto schermo dietro al testo (con velatura scura)
@@ -231,7 +232,7 @@ const SITO = {
     testoAlternativo: "Foto di Giada Al Zeer",
     // Ogni frase tra virgolette è un paragrafo separato
     paragrafi: [
-      "Sono Giada Al Zeer, graphic designer a Modena. Mi occupo di brand identity e packaging design, e accompagno i brand anche dopo il logo: campagne, materiali stampati e contenuti per Instagram.",
+      "Sono Giada Al Zeer, graphic designer a Modena e fondatrice di Ventidue Creative Studio. Mi occupo di brand identity e packaging design, e accompagno i brand anche dopo il logo: campagne, materiali stampati e contenuti per Instagram.",
       "Parto sempre dalla storia di chi ho davanti: cosa vuole dire e a chi. Da lì costruisco un sistema visivo coerente, con colori, tipografia e illustrazioni che si riconoscono su un’etichetta come in un post.",
       "Oggi sto approfondendo social media marketing, videomaking e contenuti UGC, per dare ai brand che seguo un’immagine curata anche sui social.",
     ],
