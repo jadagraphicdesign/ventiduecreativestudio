@@ -357,10 +357,12 @@ const SITO = {
 
     progetti: [
       {
-        titolo: "Chiedilo alla *Ludmi*",
+        titolo: "*Sottovoce*",
         tipo: "Reel e video",
-        cliente: "Rubrica per una personal trainer",
-        descrizione: "Una rubrica di domande, dubbi e curiosità sull’allenamento: la trainer risponde in camera, in palestra, con un linguaggio diretto.",
+        cliente: "Palestra di Modena",
+        rubrica: "Rubrica «Chiedilo alla Ludmi»",
+        descrizione: "Reel per i social di una palestra di Modena: una rubrica in cui la trainer risponde a domande, dubbi e curiosità sull’allenamento.",
+        racconto: "Per Sottovoce ho ideato «Chiedilo alla Ludmi», una rubrica di domande, dubbi e curiosità sull’allenamento: la trainer risponde in camera, in palestra, con un linguaggio diretto. Ho curato format, grafiche in sovrimpressione e montaggio.",
         video: [
           { file: "video/social/allenamento-dopo-gravidanza.mp4", copertina: "img/social/allenamento-dopo-gravidanza.jpg", titolo: "Riprendere l’allenamento dopo la gravidanza" },
           { file: "video/social/chiedilo-alla-ludmi.mp4", copertina: "img/social/chiedilo-alla-ludmi.jpg", titolo: "Chiedilo alla Ludmi — apertura della rubrica" },

@@ -730,3 +730,29 @@ h1 em, h2 em, h3 em, .sz__titolo em, .scheda__titolo em, .caso__titolo em { font
   display: grid; place-items: center; background: var(--accento-1); color: var(--panna);
   font-family: var(--font-corsivo); font-size: 1.4rem;
 }
+
+/* Social: copertina cliccabile + scheda */
+.casi { display: grid; gap: clamp(2rem, 5vw, 4rem); }
+.caso-card {
+  display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: clamp(1.5rem, 5vw, 4rem);
+  width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer;
+  background: var(--panna); border: 0; border-radius: calc(var(--raggio) * 2); padding: clamp(1.5rem, 4vw, 3.5rem);
+  box-shadow: 0 30px 60px -40px rgba(51,32,42,.45); transition: transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.caso-card:hover { transform: translateY(-6px); }
+.caso-card__telefoni { display: flex; justify-content: center; align-items: flex-end; gap: .8rem; }
+.mini-tel { width: 28%; aspect-ratio: 9 / 16; border-radius: 1rem; overflow: hidden; border: 5px solid var(--inchiostro); background: #111; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.mini-tel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mini-tel--2 { width: 34%; margin-bottom: 1.5rem; }
+.mini-tel--1 { transform: rotate(-5deg); } .mini-tel--3 { transform: rotate(5deg); }
+.caso-card:hover .mini-tel--1 { transform: rotate(-9deg) translateX(-6px); }
+.caso-card:hover .mini-tel--3 { transform: rotate(9deg) translateX(6px); }
+.caso-card__testo { display: flex; flex-direction: column; align-items: flex-start; gap: .7rem; }
+.caso-card__testo .etichetta { position: static; }
+.caso-card__titolo { font-size: clamp(2.2rem, 1.5rem + 3vw, 4rem); font-weight: var(--peso-medio); line-height: 1; letter-spacing: -.02em; }
+.caso-card__cliente { font-size: .8rem; font-weight: var(--peso-medio); letter-spacing: .12em; text-transform: uppercase; color: var(--accento-2); }
+.caso-card__desc { color: var(--grigio); max-width: 30rem; }
+.caso-card__apri { margin-top: .6rem; font-weight: var(--peso-medio); border-bottom: 1.5px solid var(--accento-1); padding-bottom: 2px; }
+.scheda__social { padding: clamp(3rem, 7vw, 5rem) var(--margine); clear: both; }
+.caso__rubrica { font-family: var(--font-corsivo); font-style: italic; font-size: 1.3rem; margin: .8rem 0 0; color: var(--accento-1); }
+@media (max-width: 760px) { .caso-card { grid-template-columns: 1fr; } }

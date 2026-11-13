@@ -119,9 +119,12 @@
     })
     .join("");
 
-  /* ---------- SOCIAL ---------- */
+  /* ---------- SOCIAL ----------
+     In pagina compare una "copertina" cliccabile per ogni progetto social;
+     il contenuto completo (Reel, strategia, caroselli) si apre nella scheda. */
   const SO = S.social;
-  if (SO && (SO.progetti || []).length) {
+  const socialVisibili = SO ? (SO.progetti || []).filter((c) => !c.nascosto) : [];
+  if (socialVisibili.length) {
     $("#social").innerHTML = `
       <div class="social__interno">
         <div class="sezione__testa">
@@ -129,67 +132,83 @@
           <h2 class="sezione__titolo">${formatta(SO.titolo)}</h2>
           ${SO.intro ? `<p class="sezione__intro">${formatta(SO.intro)}</p>` : ""}
         </div>
-        ${SO.progetti.filter((c) => !c.nascosto).map((c) => `
-        <article class="caso">
-          <header class="caso__testa rivela">
-            <span class="etichetta etichetta--c2">${sicuro(c.tipo)}</span>
-            <h3 class="caso__titolo">${formatta(c.titolo)}</h3>
-            ${c.cliente ? `<p class="progetto__meta">${formatta(c.cliente)}</p>` : ""}
-            <p class="caso__desc">${formatta(c.descrizione)}</p>
-          </header>
-          ${(c.video || []).length ? `<div class="telefoni">${c.video.map((v, k) => `
-            <figure class="telefono telefono--${k + 1} rivela">
-              <div class="telefono__schermo">
-                <video muted loop playsinline preload="none" poster="${sicuro(v.copertina)}" data-src="${sicuro(v.file)}" aria-label="${sicuro(v.titolo)}"></video>
-                <button class="telefono__audio" aria-label="Attiva l'audio" aria-pressed="false"><span class="ico-muto">🔇</span><span class="ico-audio">🔊</span></button>
-              </div>
-              <figcaption>${formatta(v.titolo)}</figcaption>
-            </figure>`).join("")}</div>` : ""}
-          ${(c.strategia || []).length ? `<div class="strategia rivela"><p class="strategia__etichetta">La strategia</p><ol>${c.strategia.map((x) => `
-            <li><h4>${formatta(x.titolo)}</h4><p>${formatta(x.testo)}</p></li>`).join("")}</ol></div>` : ""}
-          ${(c.caroselli || []).filter((k) => k && (k.slide || []).length).map((k) => `
-            <div class="carosello rivela">
-              <p class="strategia__etichetta">${formatta(k.titolo || "Carosello")}</p>
-              <div class="carosello__cornice"><div class="carosello__binario">${k.slide.map((sl, n) => `<img src="${sicuro(sl)}" alt="${sicuro((k.titolo || "Carosello") + " — slide " + (n + 1))}" loading="lazy">`).join("")}</div></div>
-              <div class="carosello__puntini">${k.slide.map((_, n) => `<span class="${n ? "" : "attivo"}"></span>`).join("")}</div>
-            </div>`).join("")}
-        </article>`).join("")}
+        <div class="casi">${socialVisibili.map((c, i) => `
+          <button class="caso-card rivela" data-apri-social="${i}" aria-label="Apri il progetto ${sicuro(String(c.titolo).replace(/\*/g, ""))}">
+            <span class="caso-card__telefoni" aria-hidden="true">${(c.video || []).slice(0, 3).map((v, k) => `
+              <span class="mini-tel mini-tel--${k + 1}"><img src="${sicuro(v.copertina)}" alt="" loading="lazy"></span>`).join("")}</span>
+            <span class="caso-card__testo">
+              <span class="etichetta etichetta--c2">${sicuro(c.tipo)}</span>
+              <span class="caso-card__titolo">${formatta(c.titolo)}</span>
+              ${c.cliente ? `<span class="caso-card__cliente">${formatta(c.cliente)}</span>` : ""}
+              <span class="caso-card__desc">${formatta(c.descrizione)}</span>
+              <span class="caso-card__apri">Guarda i contenuti <span aria-hidden="true">+</span></span>
+            </span>
+          </button>`).join("")}</div>
       </div>`;
+  } else {
+    $("#social").remove();
+  }
 
-    // Video: partono senza audio quando sono visibili, si fermano quando escono
-    const video = [...document.querySelectorAll(".telefono video")];
-    const carica = (v) => { if (!v.src) { v.src = v.dataset.src; } };
+  // Contenuto completo di un progetto social (usato nella scheda)
+  const contenutoSocial = (c) => `
+    <article class="caso">
+      <header class="caso__testa">
+        <span class="etichetta etichetta--c2">${sicuro(c.tipo)}</span>
+        <h2 class="caso__titolo">${formatta(c.titolo)}</h2>
+        ${c.cliente ? `<p class="progetto__meta">${formatta(c.cliente)}</p>` : ""}
+        ${c.rubrica ? `<p class="caso__rubrica">${formatta(c.rubrica)}</p>` : ""}
+        <p class="caso__desc">${formatta(c.racconto || c.descrizione)}</p>
+      </header>
+      ${(c.video || []).length ? `<div class="telefoni">${c.video.map((v, k) => `
+        <figure class="telefono telefono--${k + 1}">
+          <div class="telefono__schermo">
+            <video muted loop playsinline preload="none" poster="${sicuro(v.copertina)}" data-src="${sicuro(v.file)}" aria-label="${sicuro(v.titolo)}"></video>
+            <button class="telefono__audio" aria-label="Attiva l'audio" aria-pressed="false"><span class="ico-muto">🔇</span><span class="ico-audio">🔊</span></button>
+          </div>
+          <figcaption>${formatta(v.titolo)}</figcaption>
+        </figure>`).join("")}</div>` : ""}
+      ${(c.strategia || []).length ? `<div class="strategia"><p class="strategia__etichetta">La strategia</p><ol>${c.strategia.map((x) => `
+        <li><h4>${formatta(x.titolo)}</h4><p>${formatta(x.testo)}</p></li>`).join("")}</ol></div>` : ""}
+      ${(c.caroselli || []).filter((k) => k && (k.slide || []).length).map((k) => `
+        <div class="carosello">
+          <p class="strategia__etichetta">${formatta(k.titolo || "Carosello")}</p>
+          <div class="carosello__cornice"><div class="carosello__binario">${k.slide.map((sl, n) => `<img src="${sicuro(sl)}" alt="${sicuro((k.titolo || "Carosello") + " — slide " + (n + 1))}" loading="lazy">`).join("")}</div></div>
+          <div class="carosello__puntini">${k.slide.map((_, n) => `<span class="${n ? "" : "attivo"}"></span>`).join("")}</div>
+        </div>`).join("")}
+    </article>`;
+
+  // Video nella scheda: ripartono sempre dall'inizio
+  const attivaVideo = (box) => {
+    const video = [...box.querySelectorAll(".telefono video")];
+    const carica = (v) => { if (!v.getAttribute("src")) v.src = v.dataset.src; };
     const fermo = matchMedia("(prefers-reduced-motion: reduce)").matches;
     if ("IntersectionObserver" in window && !fermo) {
       const ov = new IntersectionObserver((voci) => voci.forEach((x) => {
         const v = x.target;
-        if (x.isIntersecting) { carica(v); v.play().catch(() => {}); } else { v.pause(); }
-      }), { threshold: 0.5 });
+        if (x.isIntersecting) { carica(v); v.currentTime = 0; v.play().catch(() => {}); } else { v.pause(); }
+      }), { root: box, threshold: 0.5 });
       video.forEach((v) => ov.observe(v));
     }
-    // Tocco sul telefono: audio sì/no (uno alla volta)
-    document.querySelectorAll(".telefono__schermo").forEach((sc) => {
+    box.querySelectorAll(".telefono__schermo").forEach((sc) => {
       sc.addEventListener("click", () => {
         const v = sc.querySelector("video"); const b = sc.querySelector(".telefono__audio");
         carica(v);
         const accendi = v.muted || v.paused;
         video.forEach((a) => { if (a !== v) { a.muted = true; a.closest(".telefono").classList.remove("con-audio"); } });
-        v.muted = !accendi; if (accendi) { v.currentTime = v.paused ? v.currentTime : v.currentTime; v.play().catch(() => {}); }
+        v.muted = !accendi;
+        if (accendi) { v.currentTime = 0; v.play().catch(() => {}); }   // con l'audio parte dall'inizio
         sc.closest(".telefono").classList.toggle("con-audio", accendi);
         b.setAttribute("aria-pressed", String(accendi));
       });
     });
-    // Caroselli: puntini che seguono lo scorrimento
-    document.querySelectorAll(".carosello").forEach((c) => {
+    box.querySelectorAll(".carosello").forEach((c) => {
       const bin = c.querySelector(".carosello__cornice"); const pt = c.querySelectorAll(".carosello__puntini span");
       bin.addEventListener("scroll", () => {
         const i = Math.round(bin.scrollLeft / bin.clientWidth);
         pt.forEach((p, n) => p.classList.toggle("attivo", n === i));
       }, { passive: true });
     });
-  } else {
-    $("#social").remove();
-  }
+  };
 
   /* ---------- CHI SONO ---------- */
   const C = S.chiSono;
@@ -373,14 +392,30 @@
     scheda.scrollTop = 0;
     document.body.style.overflow = "hidden";
   };
-  scheda.addEventListener("close", () => (document.body.style.overflow = ""));
+  scheda.addEventListener("close", () => {
+    document.body.style.overflow = "";
+    scheda.querySelectorAll("video").forEach((v) => v.pause());
+    scheda.classList.remove("scheda--social");
+  });
   scheda.addEventListener("click", (e) => {
     if (e.target === scheda || e.target.closest(".scheda__chiudi") || e.target.closest(".fine__torna")) scheda.close();
   });
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-apri]");
     if (b) apriScheda(+b.dataset.apri);
+    const so = e.target.closest("[data-apri-social]");
+    if (so) apriSocial(+so.dataset.apriSocial);
   });
+
+  const apriSocial = (i) => {
+    const c = socialVisibili[i];
+    scheda.removeAttribute("style");
+    scheda.classList.remove("scheda--con-soglia");
+    scheda.classList.add("scheda--social");
+    scheda.innerHTML = `<button class="scheda__chiudi" aria-label="Chiudi">✕</button><div class="scheda__social">${contenutoSocial(c)}</div>`;
+    scheda.showModal(); scheda.scrollTop = 0; document.body.style.overflow = "hidden";
+    attivaVideo(scheda);
+  };
 
   /* ---------- MICROINTERAZIONE: comparsa morbida allo scroll ---------- */
   const elementi = document.querySelectorAll(".rivela");
