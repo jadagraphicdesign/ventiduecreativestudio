@@ -807,6 +807,6 @@ h1 em, h2 em, h3 em, .sz__titolo em, .scheda__titolo em, .caso__titolo em { font
 
 /* Tappe del percorso in "Chi sono" */
 .tappa { display: flex; align-items: center; gap: 1.1rem; margin: 1.8rem 0 0; padding: .9rem 1.4rem .9rem .9rem; background: var(--panna-scuro); border-radius: 999px 1.2rem 1.2rem 999px; max-width: 34rem; }
-.tappa__foto { width: 5.2rem; height: 5.2rem; border-radius: 50%; object-fit: cover; object-position: 45% 30%; flex: none; border: 3px solid var(--panna); }
+.tappa__foto { width: 5.2rem; height: 5.2rem; border-radius: 50%; object-fit: cover; object-position: 50% 50%; flex: none; border: 3px solid var(--panna); }
 .tappa__anno { font-family: var(--font-corsivo); font-style: italic; font-size: 1.6rem; color: var(--accento-1); line-height: 1; }
 .tappa__testo { margin: .3rem 0 0 !important; font-size: .92rem; line-height: 1.45; }
