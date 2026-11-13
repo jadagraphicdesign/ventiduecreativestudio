@@ -8,16 +8,17 @@
 
 :root {
   /* --- Base --- */
-  --panna:        #F6EFE3;   /* sfondo principale */
-  --panna-scuro:  #ECE2D0;   /* riquadri e sfondi secondari */
-  --inchiostro:   #2A2420;   /* testo */
-  --grigio:       #6E6259;   /* testi secondari */
+  --panna:        #FAF1E7;   /* sfondo principale (versione chiara del panna del brand) */
+  --panna-scuro:  #F5E4D0;   /* panna del brand: riquadri e sfondi secondari */
+  --inchiostro:   #33202A;   /* testo: bordeaux quasi nero */
+  --grigio:       #75606A;   /* testi secondari */
 
-  /* --- Accenti (palette provvisoria) --- */
-  --accento-1:    #E4572E;   /* pomodoro  → parole in corsivo, bottoni */
-  --accento-2:    #2F4BD8;   /* cobalto   → sezione contatti */
-  --accento-3:    #F2C14E;   /* burro     → nastro servizi */
-  --accento-4:    #F3B1C4;   /* rosa      → dettagli */
+  /* --- Palette Ventidue (in ordine di importanza) --- */
+  --accento-2:    #663145;   /* bordeaux  → bottoni, blocco contatti, etichette */
+  --accento-3:    #F5B55B;   /* miele     → nastro servizi, adesivo */
+  --accento-4:    #EDC2DD;   /* rosa      → dettagli dietro le foto */
+  --accento-1:    #E36630;   /* arancio   → parole in corsivo, numeri */
+  --accento-5:    #DB5A93;   /* fucsia    → piccoli dettagli (stelline, sottolineature) */
 
   /* --- Font --- */
   --font-testo:   "Montserrat", system-ui, sans-serif;
@@ -85,7 +86,7 @@ em {
   display: inline-flex; align-items: center; gap: .6em;
   padding: .95em 1.6em;
   border-radius: 999px;
-  background: var(--inchiostro); color: var(--panna);
+  background: var(--accento-2); color: var(--panna);
   text-decoration: none;
   font-weight: var(--peso-medio); font-size: .95rem;
   transition: transform .25s ease, background .25s ease;
@@ -114,7 +115,7 @@ em {
 .testata__menu { display: flex; gap: clamp(.9rem, 3vw, 2.2rem); }
 .testata__menu a {
   text-decoration: none; font-size: .85rem; font-weight: var(--peso-medio);
-  padding: .4rem 0; background: linear-gradient(var(--accento-1), var(--accento-1)) left bottom / 0 1.5px no-repeat;
+  padding: .4rem 0; background: linear-gradient(var(--accento-5), var(--accento-5)) left bottom / 0 1.5px no-repeat;
   transition: background-size .3s ease;
 }
 .testata__menu a:hover { background-size: 100% 1.5px; }
@@ -198,7 +199,7 @@ em {
   letter-spacing: -0.01em; line-height: 1.2;
 }
 .nastro .corsivo { font-family: var(--font-corsivo); font-style: italic; font-weight: 400; }
-.nastro .stella { color: var(--accento-1); font-size: .7em; }
+.nastro .stella { color: var(--accento-5); font-size: .7em; }
 .nastro__riga > .stella:last-child { display: none; }
 
 /* ---------- Sezioni ---------- */
@@ -285,6 +286,7 @@ em {
   content: ""; position: absolute; inset: 1.2rem -1.2rem -1.2rem 1.2rem;
   border: 1.5px solid var(--accento-2); border-radius: var(--raggio);
 }
+.chip--c5, .etichetta--c5 { background: var(--accento-5); color: #fff; }
 .chi-sono__testo .sezione__titolo { margin-bottom: 1.8rem; font-size: clamp(2rem, 1.3rem + 3.2vw, 4rem); }
 .chi-sono__testo p { margin: 0 0 1.1rem; max-width: 38rem; }
 .competenze { list-style: none; padding: 0; margin: 2rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem; }
