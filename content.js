@@ -24,21 +24,21 @@ const SITO = {
 
   /* ---------- DATI GENERALI ---------- */
   nome: "Giada Al Zeer",                 // compare in alto a sinistra e nel footer
-  ruolo: "Graphic designer & content creator",
-  titoloPagina: "Giada Al Zeer — Portfolio", // testo della scheda del browser
-  descrizionePagina: "Portfolio di graphic design, contenuti social, video e branding.",
+  ruolo: "Graphic designer · Brand identity, packaging e contenuti social",
+  titoloPagina: "Giada Al Zeer — Graphic designer | Brand identity, packaging e social", // testo della scheda del browser
+  descrizionePagina: "Giada Al Zeer, graphic designer: brand identity, packaging, campagne e contenuti social per brand che vogliono farsi ricordare. Guarda i progetti.",
 
 
   /* ---------- HOME ---------- */
   home: {
     // Piccola riga sopra il titolo
-    etichetta: "Portfolio · Graphic design & contenuti",
+    etichetta: "Giada Al Zeer · Graphic designer",
 
     // La frase principale. Le parole tra *asterischi* diventano corsive e colorate.
-    frase: "Do forma ai brand con *design* e contenuti social che si fanno *ricordare*.",
+    frase: "Brand identity, packaging e contenuti social che si fanno *ricordare*.",
 
     // Due righe di presentazione sotto la frase
-    sottotitolo: "Sono una graphic designer: creo identità visive, contenuti per Instagram, Reel e progetti UGC. [MODIFICA O ACCORCIA QUESTA FRASE]",
+    sottotitolo: "Sono Giada, graphic designer. Costruisco identità visive complete: logo, packaging, campagne e contenuti per Instagram, perché un brand sia riconoscibile ovunque lo si incontri.",
 
     // La tua foto o immagine personale (verticale, almeno 1200px di altezza)
     immagine: "img/foto-home.jpg",
@@ -56,11 +56,11 @@ const SITO = {
 
   /* ---------- NASTRO DEI SERVIZI (la fascia colorata sotto la home) ---------- */
   servizi: [
+    "Brand identity",
+    "Packaging",
     "Contenuti social",
-    "Reel e video",
-    "UGC",
-    "Branding",
-    "Graphic design",
+    "Campagne pubblicitarie",
+    "Editoria",
   ],
 
 
@@ -88,15 +88,15 @@ const SITO = {
        crediti: "..."     → crediti in fondo alla scheda (foto, collaboratori)
   ------------------------------------------------------------------- */
   titoloProgetti: "Progetti *selezionati*",
-  introProgetti: "Una selezione di lavori tra contenuti social, video e identità visive.",
+  introProgetti: "Progetti di brand identity, packaging design e comunicazione: dal logo alla campagna, dal vasetto al feed Instagram.",
 
   progetti: [
     {
-      titolo: "*Amal* — reclaim your time",
-      tipo: "Branding e campagna",
+      titolo: "*Amal* — identità visiva e campagna per una mostra",
+      tipo: "Brand identity e campagna",
       cliente: "Progetto di tesi in Graphic Design",
       anno: "2025",
-      descrizione: "Identità visiva e campagna per Amal, un progetto contro l’anestesia visiva contemporanea: un museo che invita a fermarsi e a guardare con tempo le immagini che di solito scorriamo.",
+      descrizione: "Logo, campagna di manifesti, libro e biglietti per Amal, una mostra fotografica contro l’anestesia visiva contemporanea: un invito a fermarsi e guardare con tempo le immagini che di solito scorriamo.",
       racconto: "Amal nasce come tesi in Graphic Design: un progetto contro l’anestesia visiva contemporanea, cioè l’abitudine a scorrere immagini senza più fermarsi a guardarle. Ho progettato il logo e il pay-off “reclaim your time”, la campagna di manifesti e totem, il libro che accompagna la visita, i biglietti d’ingresso e l’allestimento della mostra fotografica. Il ricavato dei biglietti è pensato per finanziare borse di studio per gli studenti dei territori documentati.",
       copertina: "img/progetti/amal/copertina-manifesti.jpg",
       link: "https://lajeiid.github.io/SITO/",
@@ -116,17 +116,45 @@ const SITO = {
       crediti: "Fotografie esposte nella mostra: Hosny Salah.",
     },
     {
+      titolo: "*Al Meriggio d’Or* — brand identity e packaging per miele artigianale",
+      tipo: "Brand identity e packaging",
+      cliente: "Al Meriggio d’Or, Valpolicella",
+      anno: "2025",
+      descrizione: "Identità visiva completa per un laboratorio di miele, saponi naturali e candele in cera d’api: logo, etichette, packaging, campagna affissioni, contenuti Instagram e brand manual.",
+      racconto: "Al Meriggio d’Or è un’azienda familiare di Sant’Ambrogio di Valpolicella che produce miele biologico, saponette naturali e candele in cera d’api. Il nome nasce dalla canzone dei fiori di “Alice nel Paese delle Meraviglie”: per questo ho costruito un’identità morbida e un po’ fiabesca. Il marchio è una piccola ape stilizzata in volo; le texture floreali ad acquerello cambiano colore per ogni varietà di miele (rosmarino, rosa canina, millefiori, biancospino) e tornano su etichette, scatole, segnalibri e feed Instagram. Il progetto comprende il brand manual con regole d’uso del marchio, palette, tipografia, packaging, stationery, campagna affissioni “C’è aria di dolcezza”, social media, merchandising e allestimento del punto vendita.",
+      copertina: "img/progetti/meriggio/depliant.jpg",
+      link: "docs/brand-manual-al-meriggio-dor.pdf",
+      testoLink: "Sfoglia il brand manual (PDF)",
+      formato: "medio",
+      galleria: [
+        { immagine: "img/progetti/meriggio/insegna.jpg", didascalia: "Logo e insegna in legno del punto vendita" },
+        { immagine: "img/progetti/meriggio/vasetto-rosmarino.jpg", didascalia: "Packaging miele — Rosmarino" },
+        { immagine: "img/progetti/meriggio/vasetto-rosa-canina.jpg", didascalia: "Packaging miele — Rosa canina" },
+        { immagine: "img/progetti/meriggio/vasetto-millefiori.jpg", didascalia: "Packaging miele — Millefiori" },
+        { immagine: "img/progetti/meriggio/vasetto-biancospino.jpg", didascalia: "Packaging miele — Biancospino" },
+        { immagine: "img/progetti/meriggio/segnalibri.jpg", didascalia: "Segnalibri promozionali con le schede botaniche" },
+        { immagine: "img/progetti/meriggio/poster-millefiori.jpg", didascalia: "Campagna affissioni “C’è aria di dolcezza”" },
+        { immagine: "img/progetti/meriggio/poster-biancospino.jpg", didascalia: "Campagna affissioni “C’è profumo di dolcezza”" },
+        { immagine: "img/progetti/meriggio/saponetta-rosa-canina.jpg", didascalia: "Packaging saponetta naturale alla rosa canina" },
+        { immagine: "img/progetti/meriggio/candela-rosa-canina.jpg", didascalia: "Candela in cera d’api e scatola con rilievo a secco" },
+        { immagine: "img/progetti/meriggio/scatola.jpg", didascalia: "Scatola regalo" },
+        { immagine: "img/progetti/meriggio/social.jpg", didascalia: "Feed Instagram" },
+      ],
+    },
+    {
       titolo: "[TITOLO PROGETTO 2]",
+      nascosto: true,          // ← togli questa riga quando hai inserito il progetto
       tipo: "Reel e video",
       cliente: "[NOME CLIENTE]",
       anno: "[ANNO]",
       descrizione: "[Due righe: idea del video, formato, dove è stato pubblicato.]",
       copertina: "img/progetti/progetto-2.svg",
       link: "",
-      formato: "verticale",
+      formato: "medio",
     },
     {
       titolo: "[TITOLO PROGETTO 3]",
+      nascosto: true,          // ← togli questa riga quando hai inserito il progetto
       tipo: "UGC",
       cliente: "[NOME CLIENTE]",
       anno: "[ANNO]",
@@ -136,17 +164,8 @@ const SITO = {
       formato: "piccolo",
     },
     {
-      titolo: "[TITOLO PROGETTO 4]",
-      tipo: "Branding",
-      cliente: "[NOME CLIENTE]",
-      anno: "[ANNO]",
-      descrizione: "[Due righe: logo, palette, applicazioni realizzate.]",
-      copertina: "img/progetti/progetto-4.svg",
-      link: "",
-      formato: "medio",
-    },
-    {
       titolo: "[TITOLO PROGETTO 5]",
+      nascosto: true,          // ← togli questa riga quando hai inserito il progetto
       tipo: "Graphic design",
       cliente: "[NOME CLIENTE]",
       anno: "[ANNO]",
@@ -165,19 +184,22 @@ const SITO = {
     testoAlternativo: "Foto di Giada Al Zeer",
     // Ogni frase tra virgolette è un paragrafo separato
     paragrafi: [
-      "Sono una graphic designer e lavoro sui contenuti per i social: dall’identità visiva di un brand fino ai Reel e ai caroselli che la raccontano ogni giorno.",
-      "Mi piace partire da cosa vuole dire un brand e a chi, per poi trovare il modo più chiaro e riconoscibile per farlo vedere. [AGGIUNGI UNA FRASE PERSONALE: dove vivi, cosa ti ispira, come lavori.]",
+      "Sono Giada Al Zeer, graphic designer. Mi occupo di brand identity e packaging design, e accompagno i brand anche dopo il logo: campagne, materiali stampati e contenuti per Instagram.",
+      "Parto sempre dalla storia di chi ho davanti: cosa vuole dire e a chi. Da lì costruisco un sistema visivo coerente, con colori, tipografia e illustrazioni che si riconoscono su un’etichetta come in un post.",
+      "Oggi sto approfondendo social media marketing, videomaking e contenuti UGC, per dare ai brand che seguo un’immagine curata anche sui social.",
     ],
     // Frase grande in evidenza (puoi lasciarla vuota: "")
     citazione: "Ogni brand ha già una *voce*: io la rendo visibile.",
     // Le tue competenze (chip colorate)
     competenze: [
-      "Strategia social",
-      "Caroselli e grafiche",
-      "Reel e montaggio video",
-      "Contenuti UGC",
-      "Identità visiva",
-      "Fotografia di prodotto",
+      "Brand identity",
+      "Logo design",
+      "Packaging design",
+      "Brand manual",
+      "Campagne e affissioni",
+      "Editoria",
+      "Contenuti social",
+      "Reel e video",
     ],
   },
 
@@ -185,7 +207,7 @@ const SITO = {
   /* ---------- CONTATTI ---------- */
   contatti: {
     titolo: "Lavoriamo *insieme*?",
-    testo: "Raccontami il tuo progetto: un lancio, un profilo da rinnovare, una nuova identità. Ti rispondo entro due giorni lavorativi. [MODIFICA SE SERVE]",
+    testo: "Hai un brand da far nascere, un packaging da progettare o un profilo Instagram da rinnovare? Raccontami il tuo progetto: troviamo insieme l’immagine giusta.",
     email: "[INSERISCI EMAIL]",              // es. "ciao@tuonome.it"
     instagram: "[INSERISCI USERNAME]",       // solo il nome, senza @ (es. "tuonome.design")
     // Altri link facoltativi: aggiungi o togli righe

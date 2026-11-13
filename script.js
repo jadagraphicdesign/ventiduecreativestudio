@@ -92,7 +92,7 @@
       return `
       <article class="progetto progetto--${formato} rivela">
         <div class="progetto__copertina">
-          ${immagine(p.copertina, p.titolo, "progetto__img")}
+          ${immagine(p.copertina, (p.titolo + " — " + p.tipo).replace(/\*/g, ""), "progetto__img")}
           <span class="etichetta etichetta--${colore}">${sicuro(p.tipo)}</span>
           ${apribile ? `<button class="progetto__apri" data-apri="${i}" aria-label="Apri il progetto ${sicuro(p.titolo.replace(/\*/g, ""))}"><span>Guarda il progetto +</span></button>` : ""}
         </div>
