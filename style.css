@@ -402,7 +402,7 @@ button.progetto__link { background: none; border: 0; border-bottom: 1.5px solid 
 }
 .scheda::backdrop { background: rgba(42,36,32,.7); }
 .scheda__chiudi {
-  position: sticky; top: 1rem; float: right; margin: 1rem 1rem 0 0; z-index: 2;
+  position: sticky; top: 1rem; float: right; margin: 1rem 1rem -4rem 0; z-index: 2;
   width: 3rem; height: 3rem; border-radius: 50%; border: 0; cursor: pointer;
   background: var(--inchiostro); color: var(--panna); font-size: 1.1rem;
 }
@@ -538,3 +538,102 @@ button.progetto__link { background: none; border: 0; border-bottom: 1.5px solid 
 /* Logo in alto */
 .testata__logo { height: 30px; width: auto; display: block; }
 @media (max-width: 560px) { .testata__logo { height: 24px; } }
+
+/* =====================================================================
+   SEZIONI "LENTE" (usate da Amal): soglia, manifesto, contrasto,
+   principi, sosta, palette, sala, specifiche, fine
+   ===================================================================== */
+.scheda--con-soglia .scheda__chiudi { background: var(--panna); color: var(--accento-1); }
+.sz--soglia {
+  min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; background: var(--accento-1); color: var(--panna); padding: 4rem 1.5rem;
+}
+.soglia__marchio { font-family: "Quicksand", var(--font-testo); font-weight: 300; font-size: clamp(4.5rem, 3rem + 9vw, 10rem); letter-spacing: -.02em; line-height: 1; margin: 0; }
+.soglia__payoff { font-family: "Quicksand", var(--font-testo); font-weight: 300; letter-spacing: .55em; text-transform: lowercase; font-size: clamp(.8rem, .7rem + .4vw, 1.05rem); margin: 1.2rem 0 0; padding-left: .55em; }
+.soglia__nota { margin: 3.5rem 0 0; font-family: var(--font-corsivo); font-size: 1.15rem; opacity: .85; }
+.soglia__nota em { color: inherit; }
+.soglia__giu { margin-top: 3rem; opacity: .6; animation: respiro 3.5s ease-in-out infinite; }
+@keyframes respiro { 50% { transform: translateY(6px); opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .soglia__giu { animation: none; } }
+
+.sz--manifesto { padding-block: clamp(6rem, 18vh, 12rem); text-align: center; }
+.sz--manifesto blockquote { margin: 0 auto; max-width: 18ch; font-family: var(--font-corsivo); font-size: clamp(2.2rem, 1.3rem + 4vw, 4.6rem); line-height: 1.08; font-weight: 400; }
+.sz--manifesto blockquote em { color: var(--accento-1); }
+.manifesto__firma { margin: 2rem auto 0; max-width: 34rem; font-size: .78rem; color: var(--grigio); letter-spacing: .02em; }
+
+/* Contrasto: il feed che corre e l'immagine isolata */
+.contrasto { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem clamp(1rem, 4vw, 3rem); margin-top: 2.5rem; }
+.contrasto__feed { height: clamp(22rem, 55vh, 34rem); overflow: hidden; border-radius: calc(var(--raggio) * .6); background: #d9d8d3; position: relative; }
+.contrasto__feed::after { content: ""; position: absolute; inset: 0; background: linear-gradient(#d9d8d3, transparent 18%, transparent 82%, #d9d8d3); }
+.feed__nastro { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; padding: .5rem; animation: scorri 6s linear infinite; filter: blur(1.2px); }
+.feed__post { height: 7.5rem; border-radius: 6px; background: #b9bcbc; }
+.feed__post--1 { background: #9aa6ae; height: 10rem; } .feed__post--2 { background: #c9b9c2; } .feed__post--3 { background: #a9aea3; height: 9rem; }
+@keyframes scorri { to { transform: translateY(-50%); } }
+@media (prefers-reduced-motion: reduce) { .feed__nastro { animation: none; } }
+.contrasto__vuoto { display: grid; place-items: center; background: var(--panna); border: 1px solid var(--panna-scuro); border-radius: calc(var(--raggio) * .6); padding: clamp(2rem, 6vw, 4rem); }
+.contrasto__vuoto figure { margin: 0; width: min(13rem, 70%); }
+.contrasto__vuoto img { width: 100%; }
+.contrasto__etichetta { margin: 0; font-family: var(--font-corsivo); font-size: 1.15rem; line-height: 1.3; }
+
+/* Principi numerati */
+.principi { list-style: none; padding: 0; margin: 2.5rem 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 2.5rem clamp(1.5rem, 3vw, 3rem); counter-reset: p; }
+.principi li { counter-increment: p; border-top: 1px solid var(--inchiostro); padding-top: 1rem; }
+.principi li::before { content: "0" counter(p); display: block; font-size: .75rem; letter-spacing: .14em; color: var(--accento-1); margin-bottom: 1.2rem; }
+.principi h4 { margin: 0 0 .6rem; font-family: var(--font-corsivo); font-weight: 400; font-size: 1.5rem; line-height: 1.15; }
+.principi p { margin: 0; font-size: .95rem; }
+
+/* Sosta di 5 secondi */
+.sz--sosta { min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1.8rem; }
+.sosta__parola { margin: 0; font-family: var(--font-corsivo); font-size: clamp(2.6rem, 2rem + 3vw, 4.4rem); line-height: 1; }
+.sosta__parola em { color: var(--accento-1); }
+.sosta__foto { margin: 0; width: min(19rem, 70vw); }
+.sosta__foto img { width: 100%; filter: blur(16px) grayscale(1); opacity: .35; transform: scale(.97); transition: filter var(--durata) ease, opacity var(--durata) ease, transform var(--durata) ease; }
+.sosta__linea { width: min(19rem, 70vw); height: 1px; background: var(--panna-scuro); }
+.sosta__linea span { display: block; height: 100%; width: 0; background: var(--accento-1); transition: width var(--durata) linear; }
+.sosta__dopo { max-width: 30rem; margin: 0; opacity: 0; transform: translateY(8px); transition: opacity 1.2s ease, transform 1.2s ease; }
+.sz--sosta.in-corso .sosta__foto img { filter: none; opacity: 1; transform: none; }
+.sz--sosta.in-corso .sosta__linea span { width: 100%; }
+.sz--sosta.fatta .sosta__dopo { opacity: 1; transform: none; }
+
+/* Palette */
+.palette { list-style: none; padding: 0; margin: 2.5rem 0 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+.palette li { display: flex; flex-direction: column; gap: .3rem; font-size: .85rem; }
+.palette__campione { aspect-ratio: 3 / 4; background: var(--c); border-radius: 999px 999px 4px 4px; border: 1px solid rgba(0,0,0,.08); margin-bottom: .6rem; }
+.palette strong { font-weight: var(--peso-medio); }
+.palette code { font-family: var(--font-testo); color: var(--grigio); font-size: .78rem; }
+.palette__ruolo { color: var(--grigio); line-height: 1.4; }
+
+/* La sala: un'opera per "parete", molto vuoto intorno */
+.opera { margin: clamp(4rem, 14vh, 9rem) auto 0; max-width: 60rem; }
+.opera img { width: 100%; border-radius: 4px; }
+.opera figcaption { font-family: var(--font-corsivo); font-size: 1.15rem; color: var(--inchiostro); text-align: center; margin-top: 1.1rem; }
+.sala__nota { text-align: center; font-size: .75rem; color: var(--grigio); margin-top: 3rem; }
+
+/* Specifiche: immagine + scheda tecnica */
+.sz--specifiche { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
+.sz--specifiche figure { margin: 0; }
+.sz--specifiche img { width: 100%; border-radius: 4px; }
+.sz--specifiche dl { display: grid; grid-template-columns: auto 1fr; gap: .7rem 1.4rem; margin: 0; font-size: .9rem; border-top: 1px solid var(--inchiostro); padding-top: 1.2rem; }
+.sz--specifiche dt { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--grigio); padding-top: .2rem; }
+.sz--specifiche dd { margin: 0; }
+.sz--specifiche:nth-of-type(even) figure { order: 2; }
+
+/* La fine del percorso */
+.sz--fine { min-height: 70svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: var(--accento-1); color: var(--panna); margin-top: 3rem; }
+.fine__testo { font-family: var(--font-corsivo); font-size: clamp(2.2rem, 1.5rem + 3vw, 4rem); margin: 0; }
+.fine__testo em { color: var(--accento-3); }
+.fine__nota { max-width: 30rem; margin: 1.5rem 0 2.5rem; opacity: .85; }
+.fine__torna { background: var(--panna); color: var(--accento-1); border: 0; cursor: pointer; font-family: var(--font-testo); }
+
+@media (max-width: 760px) {
+  .contrasto { grid-template-columns: 1fr; }
+  .contrasto__etichetta:nth-of-type(1) { order: -1; grid-row: 1; }
+  .contrasto__feed { height: 16rem; grid-row: 2; }
+  .contrasto__etichetta:nth-of-type(2) { grid-row: 3; margin-top: 1rem; }
+  .contrasto__vuoto { grid-row: 4; }
+  .palette { grid-template-columns: repeat(3, 1fr); }
+  .sz--specifiche { grid-template-columns: 1fr; }
+  .sz--specifiche:nth-of-type(even) figure { order: 0; }
+}
+.sz--specifiche img, .scheda .sz--immagine img { mix-blend-mode: multiply; } /* il bianco delle foto si fonde con lo sfondo */
+.sz--specifiche img { max-height: 75vh; object-fit: contain; }

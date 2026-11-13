@@ -96,26 +96,139 @@ const SITO = {
     {
       titolo: "*Amal* — identità visiva e campagna per una mostra",
       tipo: "Brand identity e campagna",
-      cliente: "Progetto di tesi in Graphic Design",
-      anno: "2025",
-      descrizione: "Logo, campagna di manifesti, libro e biglietti per Amal, una mostra fotografica contro l’anestesia visiva contemporanea: un invito a fermarsi e guardare con tempo le immagini che di solito scorriamo.",
-      racconto: "Amal nasce come tesi in Graphic Design: un progetto contro l’anestesia visiva contemporanea, cioè l’abitudine a scorrere immagini senza più fermarsi a guardarle. Ho progettato il logo e il pay-off “reclaim your time”, la campagna di manifesti e totem, il libro che accompagna la visita, i biglietti d’ingresso e l’allestimento della mostra fotografica. Il ricavato dei biglietti è pensato per finanziare borse di studio per gli studenti dei territori documentati.",
+      cliente: "Tesi di Diploma Accademico in Graphic Design",
+      anno: "2026",
+      descrizione: "Logo, campagna di manifesti, catalogo, biglietti e sito per Amal, un museo della memoria contro l’anestesia visiva contemporanea: un invito a fermarsi e guardare con tempo le immagini che di solito scorriamo.",
       copertina: "img/progetti/amal/copertina-manifesti.jpg",
       link: "https://lajeiid.github.io/SITO/",
       testoLink: "Visita il sito di Amal",
       formato: "largo",
-      galleria: [
-        { immagine: "img/progetti/amal/logo-costruzione.jpg", didascalia: "Logo e costruzione del marchio" },
-        { immagine: "img/progetti/amal/totem.jpg", didascalia: "Totem della campagna" },
-        { immagine: "img/progetti/amal/biglietti.jpg", didascalia: "Biglietti d’ingresso, fronte e retro" },
-        { immagine: "img/progetti/amal/libro.jpg", didascalia: "Il libro della mostra" },
-        { immagine: "img/progetti/amal/mostra-sospensione.jpg", didascalia: "Allestimento — “La sospensione della realtà”" },
-        { immagine: "img/progetti/amal/mostra-radici.jpg", didascalia: "Allestimento — “Radici nel vuoto”" },
-        { immagine: "img/progetti/amal/mostra-luce.jpg", didascalia: "Allestimento — “Luce nel buio”" },
-        { immagine: "img/progetti/amal/mostra-rallenta.jpg", didascalia: "Allestimento — “Rallenta, la memoria ha bisogno di tempo”" },
-        { immagine: "img/progetti/amal/rallenta-citazione.jpg" },
+
+      // Colori e caratteri della scheda: quelli di Amal (Blue Fusion, Cloud Dancer, Hematite, Garamond)
+      tema: {
+        "panna": "#EEEDE9", "panna-scuro": "#E2E1DC", "inchiostro": "#3B4042", "grigio": "#6E7476",
+        "accento-1": "#42586A", "accento-2": "#42586A", "accento-3": "#DBD2DB", "accento-4": "#CAD3C1",
+        "font-corsivo": "'EB Garamond', Georgia, serif",
+      },
+
+      sezioni: [
+        { tipo: "soglia", marchio: "amal", payoff: "reclaim your time", nota: "أمل — in arabo significa *speranza*" },
+
+        { tipo: "manifesto", testo: "Guardiamo tutto, ma non vediamo più *nulla*.", firma: "Dalla tesi “L’immagine tra viralità e memoria. Strategie di Graphic Design contro l’anestesia visiva contemporanea”" },
+
+        {
+          tipo: "testo",
+          titolo: "Il *problema*",
+          testo: "Ogni giorno scorriamo migliaia di immagini. Una fotografia di guerra compare tra un video divertente e una pubblicità, alla stessa velocità. La viralità la fa circolare in fretta e la consuma ancora più in fretta: il dolore degli altri diventa un contenuto da scorrere e perde il suo valore di testimonianza. È quella che nella tesi chiamo anestesia visiva.",
+        },
+
+        {
+          tipo: "contrasto",
+          titolo: "Dal flusso alla *sosta*",
+          sinistra: "Il feed: tutto alla stessa velocità, niente resta.",
+          destra: "Amal: un’immagine, uno spazio, un tempo.",
+          immagine: "img/progetti/amal/ritratto-sorriso.jpg",
+          didascalia: "Luce nel buio — Rafah, maggio 2025. Foto di Hosny Salah",
+        },
+
+        {
+          tipo: "testo",
+          titolo: "La *domanda*",
+          testo: "Come può il graphic design restituire profondità allo sguardo? La mia risposta è Amal: un museo fisico, editoriale e digitale dedicato alla memoria della Palestina. Non un archivio di sofferenza, ma uno spazio per il *Sumud*, la resistenza tenace della vita quotidiana: crescere, studiare, abitare. È un progetto che sento anche come figlia: il legame con la storia palestinese mi è arrivato da mio padre.",
+        },
+
+        {
+          tipo: "principi",
+          titolo: "Il metodo: *sottrazione protettiva*",
+          testo: "Dove il feed accumula, Amal toglie. Eliminare il rumore visivo lascia la mente libera di confrontarsi con ciò che conta davvero: l’immagine.",
+          elementi: [
+            { titolo: "Vuoto protettivo", testo: "Lo spazio intorno all’immagine non è un margine: è una soglia che la separa dal rumore e impone una distanza di rispetto." },
+            { titolo: "Isolamento iconico", testo: "Una sola immagine alla volta. Nessun testo sopra le fotografie: le parole arrivano dopo, nello spazio accanto." },
+            { titolo: "Rallentamento tipografico", testo: "Un carattere geometrico per i titoli e un Garamond per i testi: le grazie della tradizione editoriale distendono il ritmo della lettura." },
+            { titolo: "Una fine", testo: "Il feed non finisce mai, e per questo non si ricorda. Ogni percorso di Amal ha un inizio e una conclusione." },
+          ],
+        },
+
+        {
+          tipo: "sosta",
+          immagine: "img/progetti/amal/ritratto-lentiggini.jpg",
+          testo: "*Fermati.*",
+          dopo: "Cinque secondi: il tempo minimo perché un’immagine smetta di essere un contenuto e diventi memoria. Sul sito di Amal il comando per andare avanti compare solo dopo questa pausa.",
+          secondi: 5,
+        },
+
+        {
+          tipo: "palette",
+          titolo: "Colori che *calmano*",
+          testo: "Nessun colore saturo che richiami i social: una palette atmosferica che abbassa il carico visivo e prepara l’occhio alla sosta.",
+          colori: [
+            { nome: "Blue Fusion", codice: "#42586A", ruolo: "Sfondo primario e titoli: la profondità della storia" },
+            { nome: "Cloud Dancer", codice: "#EEEDE9", ruolo: "Il vuoto protettivo" },
+            { nome: "Hematite", codice: "#3B4042", ruolo: "Testo: meno duro del nero, per una lettura lenta" },
+            { nome: "Orchid Tint", codice: "#DBD2DB", ruolo: "Accento: fragilità e umanità" },
+            { nome: "Almost Aqua", codice: "#CAD3C1", ruolo: "Elementi grafici: trasparenza e chiarezza" },
+          ],
+        },
+        { tipo: "immagine", immagine: "img/progetti/amal/logo-costruzione.jpg", didascalia: "Logotipo in All Round Gothic: forme circolari, nessuna decorazione. Il payoff ha un tracking ampio che rallenta la lettura." },
+
+        {
+          tipo: "sala",
+          titolo: "Il *museo*",
+          testo: "Ho scelto la parola museo perché Amal non è una mostra temporanea ma un luogo di conservazione, dove si deposita ciò che non si vuole dimenticare. Un’opera per parete, un percorso a senso unico scandito da archi, nessun suono se non quello dei passi.",
+          opere: [
+            { immagine: "img/progetti/amal/mostra-sospensione.jpg", didascalia: "La sospensione della *realtà* — Gaza, ottobre 2025" },
+            { immagine: "img/progetti/amal/mostra-radici.jpg", didascalia: "Radici nel *vuoto* — Gaza, ottobre 2025" },
+            { immagine: "img/progetti/amal/mostra-luce.jpg", didascalia: "*Luce* nel buio — Rafah, maggio 2025" },
+            { immagine: "img/progetti/amal/mostra-rallenta.jpg", didascalia: "*Rallenta*, la memoria ha bisogno di tempo" },
+          ],
+          nota: "Le ambientazioni sono una rappresentazione concettuale del progetto.",
+        },
+
+        {
+          tipo: "coppia",
+          titolo: "Una campagna che *interrompe*",
+          testo: "Un trittico di affissioni: “Benvenuti nell’era dell’anestesia visiva” denuncia lo scroll che consuma le immagini; “Sostieni. Custodisci. Ricorda.” dà al visitatore tre compiti; “Fermati.” è una parola sola, che interrompe la corsa di chi passa.",
+          immagini: [
+            { immagine: "img/progetti/amal/copertina-manifesti.jpg", didascalia: "Il trittico di manifesti" },
+            { immagine: "img/progetti/amal/totem.jpg", didascalia: "Totem nel percorso del museo" },
+          ],
+        },
+
+        {
+          tipo: "specifiche",
+          titolo: "Il *catalogo*",
+          testo: "Fuori dal museo, la memoria continua sulla carta: un libro che si regge con due mani e non si sfoglia di fretta.",
+          immagine: "img/progetti/amal/libro.jpg",
+          voci: [
+            ["Formato", "240 × 240 mm"],
+            ["Carta", "Uncoated 160 g, colore Cloud Dancer"],
+            ["Rilegatura", "Filo refe a dorso scoperto, apertura a 180°"],
+            ["Copertina", "Cartone telato Blue Fusion"],
+          ],
+        },
+
+        {
+          tipo: "specifiche",
+          titolo: "Il *biglietto*",
+          testo: "Il valore dell’ingresso non è il prezzo di un servizio ma un gesto di sostegno: nel progetto, l’intero ricavato finanzia borse di studio per gli studenti dei territori documentati.",
+          immagine: "img/progetti/amal/biglietti.jpg",
+        },
+
+        {
+          tipo: "principi",
+          titolo: "Il *sito*: un web che non trattiene",
+          testo: "Amal non rifiuta il digitale, ne cambia le regole. Ho progettato e programmato il sito in HTML, CSS e JavaScript per trasformare la sosta da idea grafica a regola dell’interfaccia.",
+          elementi: [
+            { titolo: "Niente scroll infinito", testo: "Le immagini avanzano a scatti, separate da intervalli di silenzio visivo." },
+            { titolo: "Cinque secondi", testo: "I comandi per avanzare compaiono solo dopo l’osservazione; una linea sottile segna il tempo." },
+            { titolo: "Un percorso chiuso", testo: "Al massimo quindici immagini, poi si torna alla home. La fine dà valore all’esperienza." },
+            { titolo: "Anche su telefono", testo: "Proprio dove lo scroll è più compulsivo, il sito impone la stessa grammatica di vuoto e attesa." },
+          ],
+        },
+
+        { tipo: "fine", testo: "Il percorso finisce *qui*.", nota: "Amal, la speranza: restituire allo sguardo il tempo necessario per riconoscere l’altro." },
       ],
-      crediti: "Fotografie esposte nella mostra: Hosny Salah.",
+      crediti: "Fotografie esposte nel progetto: Hosny Salah, reportage da Gaza (2024–2025).",
     },
     {
       titolo: "*Al Meriggio d’Or* — brand identity e packaging per miele artigianale",

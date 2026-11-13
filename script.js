@@ -184,6 +184,46 @@
     const testo = z.testo ? `<p class="sz__testo">${formatta(z.testo)}</p>` : "";
     const img = (src, alt, cl = "") => `<img class="${cl}" src="${sicuro(src)}" alt="${sicuro(String(alt || "").replace(/\*/g, ""))}" loading="lazy">`;
     switch (z.tipo) {
+      case "soglia":
+        return `<section class="sz sz--soglia">
+          <p class="soglia__marchio">${sicuro(z.marchio)}</p>
+          ${z.payoff ? `<p class="soglia__payoff">${sicuro(z.payoff)}</p>` : ""}
+          ${z.nota ? `<p class="soglia__nota">${formatta(z.nota)}</p>` : ""}
+          <span class="soglia__giu" aria-hidden="true">↓</span>
+        </section>`;
+      case "manifesto":
+        return `<section class="sz sz--manifesto"><blockquote>${formatta(z.testo)}</blockquote>${z.firma ? `<p class="manifesto__firma">${formatta(z.firma)}</p>` : ""}</section>`;
+      case "contrasto":
+        return `<section class="sz sz--contrasto">${titolo}${testo}
+          <div class="contrasto">
+            <div class="contrasto__feed" aria-hidden="true"><div class="feed__nastro">${Array.from({ length: 14 }, (_, k) => `<span class="feed__post feed__post--${k % 4}"></span>`).join("")}${Array.from({ length: 14 }, (_, k) => `<span class="feed__post feed__post--${k % 4}"></span>`).join("")}</div></div>
+            <div class="contrasto__vuoto"><figure>${img(z.immagine, z.didascalia)}${z.didascalia ? `<figcaption>${formatta(z.didascalia)}</figcaption>` : ""}</figure></div>
+            <p class="contrasto__etichetta">${formatta(z.sinistra)}</p>
+            <p class="contrasto__etichetta">${formatta(z.destra)}</p>
+          </div></section>`;
+      case "principi":
+        return `<section class="sz sz--principi">${titolo}${testo}<ol class="principi">${z.elementi.map((e) => `
+            <li><h4>${formatta(e.titolo)}</h4><p>${formatta(e.testo)}</p></li>`).join("")}</ol></section>`;
+      case "sosta":
+        return `<section class="sz sz--sosta" style="--durata:${Number(z.secondi) || 5}s" data-secondi="${Number(z.secondi) || 5}">
+          <p class="sosta__parola">${formatta(z.testo)}</p>
+          <figure class="sosta__foto">${img(z.immagine, "Ritratto")}</figure>
+          <div class="sosta__linea" aria-hidden="true"><span></span></div>
+          <p class="sosta__dopo">${formatta(z.dopo)}</p>
+        </section>`;
+      case "palette":
+        return `<section class="sz sz--palette">${titolo}${testo}<ul class="palette">${z.colori.map((c) => `
+            <li style="--c:${sicuro(c.codice)}"><span class="palette__campione"></span><strong>${sicuro(c.nome)}</strong><code>${sicuro(c.codice)}</code><span class="palette__ruolo">${formatta(c.ruolo)}</span></li>`).join("")}</ul></section>`;
+      case "sala":
+        return `<section class="sz sz--sala">${titolo}${testo}${z.opere.map((o) => `
+            <figure class="opera">${img(o.immagine, o.didascalia)}<figcaption>${formatta(o.didascalia)}</figcaption></figure>`).join("")}
+            ${z.nota ? `<p class="sala__nota">${formatta(z.nota)}</p>` : ""}</section>`;
+      case "specifiche":
+        return `<section class="sz sz--specifiche"><figure>${img(z.immagine, String(z.titolo || "").replace(/\*/g, ""))}</figure>
+          <div>${titolo}${testo}${z.voci ? `<dl>${z.voci.map(([k, v]) => `<dt>${sicuro(k)}</dt><dd>${formatta(v)}</dd>`).join("")}</dl>` : ""}</div></section>`;
+      case "fine":
+        return `<section class="sz sz--fine"><p class="fine__testo">${formatta(z.testo)}</p>${z.nota ? `<p class="fine__nota">${formatta(z.nota)}</p>` : ""}
+          <button class="bottone fine__torna">Torna ai progetti</button></section>`;
       case "apertura":
         return `<section class="sz sz--apertura">${img(z.immagine, z.didascalia)}</section>`;
       case "testo":
@@ -216,7 +256,7 @@
     const meta = [p.cliente, p.anno].filter(Boolean).map(formatta).join(" · ");
     scheda.innerHTML = `
       <button class="scheda__chiudi" aria-label="Chiudi">✕</button>
-      ${(p.sezioni || []).filter((z) => z.tipo === "apertura").map(sezione).join("")}
+      ${(p.sezioni || []).filter((z) => ["apertura", "soglia"].includes(z.tipo)).map(sezione).join("")}
       <header class="scheda__testa">
         <span class="etichetta etichetta--${coloriEtichette[i % 4]}">${sicuro(p.tipo)}</span>
         <h2 class="scheda__titolo">${formatta(p.titolo)}</h2>
@@ -224,7 +264,7 @@
         <p class="scheda__desc">${formatta(p.racconto || p.descrizione)}</p>
         ${p.link ? link(p.link, sicuro(p.testoLink || "Visita il sito") + ' <span aria-hidden="true">↗</span>', 'class="bottone"') : ""}
       </header>
-      ${(p.sezioni || []).filter((z) => z.tipo !== "apertura").map(sezione).join("")}
+      ${(p.sezioni || []).filter((z) => !["apertura", "soglia", "fine"].includes(z.tipo)).map(sezione).join("")}
       <div class="scheda__galleria">
         ${(p.galleria || []).map((g) => {
           const src = typeof g === "string" ? g : g.immagine;
@@ -232,7 +272,17 @@
           return `<figure class="scheda__foto">${immagine(src, did || p.titolo, "")}${did ? `<figcaption>${formatta(did)}</figcaption>` : ""}</figure>`;
         }).join("")}
       </div>
-      ${p.crediti ? `<p class="scheda__crediti">${formatta(p.crediti)}</p>` : ""}`;
+      ${p.crediti ? `<p class="scheda__crediti">${formatta(p.crediti)}</p>` : ""}
+      ${(p.sezioni || []).filter((z) => z.tipo === "fine").map(sezione).join("")}`;
+    scheda.classList.toggle("scheda--con-soglia", (p.sezioni || []).some((z) => z.tipo === "soglia"));
+
+    // La "sosta": parte quando la sezione è ben visibile e dura i secondi indicati
+    scheda.querySelectorAll(".sz--sosta").forEach((el) => {
+      const via = () => { el.classList.add("in-corso"); setTimeout(() => el.classList.add("fatta"), (+el.dataset.secondi || 5) * 1000); };
+      if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { el.classList.add("in-corso", "fatta"); return; }
+      const oss = new IntersectionObserver((v) => { if (v[0].isIntersecting) { via(); oss.disconnect(); } }, { root: scheda, threshold: 0.55 });
+      oss.observe(el);
+    });
     // foto orizzontali larghe, verticali affiancate
     scheda.querySelectorAll(".scheda__foto img").forEach((img) => {
       const segna = () => img.parentElement.classList.add(img.naturalWidth >= img.naturalHeight ? "larga" : "alta");
@@ -244,7 +294,7 @@
   };
   scheda.addEventListener("close", () => (document.body.style.overflow = ""));
   scheda.addEventListener("click", (e) => {
-    if (e.target === scheda || e.target.closest(".scheda__chiudi")) scheda.close();
+    if (e.target === scheda || e.target.closest(".scheda__chiudi") || e.target.closest(".fine__torna")) scheda.close();
   });
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-apri]");

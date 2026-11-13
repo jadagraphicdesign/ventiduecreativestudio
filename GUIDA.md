@@ -93,3 +93,17 @@ Per scontornare un'immagine puoi usare "Rimuovi sfondo" di Canva o di Photoshop:
 - `logo` in `content.js`: è il logo in alto a sinistra. Se lo lasci vuoto (`""`) al suo posto compare il nome scritto.
 - La favicon, cioè l'iconcina nella scheda del browser, è `img/favicon.png`.
 - `sfuma: true` su un elemento del collage: sfuma il bordo inferiore dell'immagine. Serve per le foto tagliate, come la polo.
+
+## Sezioni "lente" (come Amal)
+Altri tipi di sezione che puoi usare in `sezioni`:
+- `soglia`: schermata d'ingresso colorata con il marchio
+- `manifesto`: una frase grande
+- `contrasto`: il feed che scorre accanto a un'immagine isolata
+- `principi`: un elenco numerato
+- `sosta`: un'immagine che si mette a fuoco in N secondi (`secondi: 5`)
+- `palette`: i colori del progetto
+- `sala`: un'immagine alla volta, con molto vuoto intorno
+- `specifiche`: un'immagine con una scheda tecnica (`voci`)
+- `fine`: la chiusura del percorso, con il bottone "Torna ai progetti"
+
+Con `tema` puoi cambiare anche i caratteri della scheda, per esempio `"font-corsivo": "'EB Garamond', serif"`.
