@@ -704,3 +704,29 @@ button.progetto__link { background: none; border: 0; border-bottom: 1.5px solid 
   .testata__menu { gap: .7rem; } .testata__menu a { font-size: .74rem; }
 }
 .caso__testa .etichetta { position: static; }
+
+/* --- Amal: ritocchi --- */
+/* Il corsivo (Garamond / Playfair) ha un occhio più piccolo di Montserrat: lo ingrandiamo un po' perché sembri della stessa misura */
+h1 em, h2 em, h3 em, .sz__titolo em, .scheda__titolo em, .caso__titolo em { font-size: 1.1em; line-height: .9; }
+.scheda h2 em, .scheda h3 em, .scheda .scheda__titolo em { font-size: 1.18em; }
+.scheda .principi h4, .scheda .contrasto__etichetta, .scheda .opera figcaption, .scheda .fine__testo { font-size-adjust: 0.5; }
+
+.soglia__logo { width: min(26rem, 70vw); height: auto; }
+
+.feed__nastro--foto { display: block; padding: 0; animation-duration: 14s; filter: none; }
+.feed__nastro--foto img { display: block; width: 100%; height: auto; }
+
+/* Timer a pallino: 5'' */
+.sosta__timer { position: relative; width: 5.5rem; height: 5.5rem; display: grid; place-items: center; }
+.sosta__timer svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.sosta__anello { fill: var(--panna); stroke: var(--panna-scuro); stroke-width: 3; }
+.sosta__avanzamento { fill: none; stroke: var(--accento-1); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset var(--durata) linear; }
+.sz--sosta.in-corso .sosta__avanzamento { stroke-dashoffset: 0; }
+.sosta__numero { position: relative; font-family: var(--font-corsivo); font-size: 1.9rem; color: var(--accento-1); line-height: 1; }
+.sz--sosta.fatta .sosta__timer { opacity: .35; transition: opacity 1s ease; }
+
+.principi__badge {
+  float: right; width: 3.4rem; height: 3.4rem; margin: -.4rem 0 .4rem .6rem; border-radius: 50%;
+  display: grid; place-items: center; background: var(--accento-1); color: var(--panna);
+  font-family: var(--font-corsivo); font-size: 1.4rem;
+}

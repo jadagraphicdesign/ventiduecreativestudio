@@ -112,7 +112,7 @@ const SITO = {
       },
 
       sezioni: [
-        { tipo: "soglia", marchio: "amal", payoff: "reclaim your time", nota: "أمل — in arabo significa *speranza*" },
+        { tipo: "soglia", marchio: "amal", payoff: "reclaim your time", logo: "img/progetti/amal/logo-amal.png", nota: "أمل — in arabo significa *speranza*" },
 
         { tipo: "manifesto", testo: "Guardiamo tutto, ma non vediamo più *nulla*.", firma: "Dalla tesi “L’immagine tra viralità e memoria. Strategie di Graphic Design contro l’anestesia visiva contemporanea”" },
 
@@ -125,6 +125,7 @@ const SITO = {
         {
           tipo: "contrasto",
           titolo: "Dal flusso alla *sosta*",
+          feed: "img/progetti/amal/feed-instagram.jpg",   // schermata di Instagram sfocata
           sinistra: "Il feed: tutto alla stessa velocità, niente resta.",
           destra: "Amal: un’immagine, uno spazio, un tempo.",
           immagine: "img/progetti/amal/ritratto-sorriso.jpg",
@@ -220,7 +221,7 @@ const SITO = {
           testo: "Amal non rifiuta il digitale, ne cambia le regole. Ho progettato e programmato il sito in HTML, CSS e JavaScript per trasformare la sosta da idea grafica a regola dell’interfaccia.",
           elementi: [
             { titolo: "Niente scroll infinito", testo: "Le immagini avanzano a scatti, separate da intervalli di silenzio visivo." },
-            { titolo: "Cinque secondi", testo: "I comandi per avanzare compaiono solo dopo l’osservazione; una linea sottile segna il tempo." },
+            { titolo: "Cinque secondi", badge: "5''", testo: "I comandi per avanzare compaiono solo dopo l’osservazione; una linea sottile segna il tempo." },
             { titolo: "Un percorso chiuso", testo: "Al massimo quindici immagini, poi si torna alla home. La fine dà valore all’esperienza." },
             { titolo: "Anche su telefono", testo: "Proprio dove lo scroll è più compulsivo, il sito impone la stessa grammatica di vuoto e attesa." },
           ],

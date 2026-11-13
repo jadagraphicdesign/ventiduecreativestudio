@@ -258,8 +258,8 @@
     switch (z.tipo) {
       case "soglia":
         return `<section class="sz sz--soglia">
-          <p class="soglia__marchio">${sicuro(z.marchio)}</p>
-          ${z.payoff ? `<p class="soglia__payoff">${sicuro(z.payoff)}</p>` : ""}
+          ${z.logo ? `<img class="soglia__logo" src="${sicuro(z.logo)}" alt="${sicuro(z.marchio || "Logo")}">` : `<p class="soglia__marchio">${sicuro(z.marchio)}</p>
+          ${z.payoff ? `<p class="soglia__payoff">${sicuro(z.payoff)}</p>` : ""}`}
           ${z.nota ? `<p class="soglia__nota">${formatta(z.nota)}</p>` : ""}
           <span class="soglia__giu" aria-hidden="true">↓</span>
         </section>`;
@@ -268,19 +268,24 @@
       case "contrasto":
         return `<section class="sz sz--contrasto">${titolo}${testo}
           <div class="contrasto">
-            <div class="contrasto__feed" aria-hidden="true"><div class="feed__nastro">${Array.from({ length: 14 }, (_, k) => `<span class="feed__post feed__post--${k % 4}"></span>`).join("")}${Array.from({ length: 14 }, (_, k) => `<span class="feed__post feed__post--${k % 4}"></span>`).join("")}</div></div>
+            <div class="contrasto__feed" aria-hidden="true">${z.feed
+              ? `<div class="feed__nastro feed__nastro--foto"><img src="${sicuro(z.feed)}" alt=""><img src="${sicuro(z.feed)}" alt=""></div>`
+              : `<div class="feed__nastro">${Array.from({ length: 28 }, (_, k) => `<span class="feed__post feed__post--${k % 4}"></span>`).join("")}</div>`}</div>
             <div class="contrasto__vuoto"><figure>${img(z.immagine, z.didascalia)}${z.didascalia ? `<figcaption>${formatta(z.didascalia)}</figcaption>` : ""}</figure></div>
             <p class="contrasto__etichetta">${formatta(z.sinistra)}</p>
             <p class="contrasto__etichetta">${formatta(z.destra)}</p>
           </div></section>`;
       case "principi":
         return `<section class="sz sz--principi">${titolo}${testo}<ol class="principi">${z.elementi.map((e) => `
-            <li><h4>${formatta(e.titolo)}</h4><p>${formatta(e.testo)}</p></li>`).join("")}</ol></section>`;
+            <li>${e.badge ? `<span class="principi__badge">${sicuro(e.badge)}</span>` : ""}<h4>${formatta(e.titolo)}</h4><p>${formatta(e.testo)}</p></li>`).join("")}</ol></section>`;
       case "sosta":
         return `<section class="sz sz--sosta" style="--durata:${Number(z.secondi) || 5}s" data-secondi="${Number(z.secondi) || 5}">
           <p class="sosta__parola">${formatta(z.testo)}</p>
           <figure class="sosta__foto">${img(z.immagine, "Ritratto")}</figure>
-          <div class="sosta__linea" aria-hidden="true"><span></span></div>
+          <div class="sosta__timer" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><circle class="sosta__anello" cx="50" cy="50" r="46"/><circle class="sosta__avanzamento" cx="50" cy="50" r="46" pathLength="100"/></svg>
+            <span class="sosta__numero">${Number(z.secondi) || 5}''</span>
+          </div>
           <p class="sosta__dopo">${formatta(z.dopo)}</p>
         </section>`;
       case "palette":
@@ -350,7 +355,11 @@
 
     // La "sosta": parte quando la sezione è ben visibile e dura i secondi indicati
     scheda.querySelectorAll(".sz--sosta").forEach((el) => {
-      const via = () => { el.classList.add("in-corso"); setTimeout(() => el.classList.add("fatta"), (+el.dataset.secondi || 5) * 1000); };
+      const via = () => {
+        el.classList.add("in-corso");
+        const tot = +el.dataset.secondi || 5; let n = tot; const num = el.querySelector(".sosta__numero");
+        const t = setInterval(() => { n--; if (num) num.textContent = Math.max(n, 0) + "''"; if (n <= 0) { clearInterval(t); el.classList.add("fatta"); } }, 1000);
+      };
       if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { el.classList.add("in-corso", "fatta"); return; }
       const oss = new IntersectionObserver((v) => { if (v[0].isIntersecting) { via(); oss.disconnect(); } }, { root: scheda, threshold: 0.55 });
       oss.observe(el);
