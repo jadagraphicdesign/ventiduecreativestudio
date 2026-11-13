@@ -60,7 +60,7 @@
   const H = S.home;
   const home = $("#home");
   home.classList.add(H.stile === "sfondo" ? "home--sfondo" : "home--affiancata");
-  const giri = (H.adesivo || "").repeat(2);
+  const giri = (H.adesivo || "").trim().replace(/[•·\s]+$/, "") + " • "; // la frase gira una volta sola, distribuita su tutto il cerchio
   home.innerHTML = `
     <div class="home__testo">
       <p class="occhiello">${formatta(H.etichetta)}</p>
@@ -74,7 +74,7 @@
       <a href="#progetti" class="adesivo" aria-label="${sicuro(H.bottone)}">
         <svg viewBox="0 0 120 120" aria-hidden="true">
           <defs><path id="cerchio" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
-          <text><textPath href="#cerchio">${sicuro(giri)}</textPath></text>
+          <text><textPath href="#cerchio" textLength="285" lengthAdjust="spacing">${sicuro(giri)}</textPath></text>
         </svg>
         <span class="adesivo__freccia">↓</span>
       </a>` : ""}

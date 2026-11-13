@@ -52,7 +52,7 @@ const SITO = {
 
     bottone: "Guarda i progetti",
     // Testo dell'adesivo rotondo che gira sulla foto (corto!)
-    adesivo: "guarda i progetti • scrivimi • ",
+    adesivo: "guarda i progetti • scrivimi",
   },
 
 
