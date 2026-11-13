@@ -115,3 +115,6 @@ In `content.js`, dentro `social` → `progetti`, ogni blocco è un lavoro social
 - `caroselli`: un elenco di slide in formato 4:5, da mettere in `img/social/`.
 
 **Video leggeri:** prima di caricare un video, esportalo in MP4 (H.264) a 720 px di larghezza e tienilo sotto i 5 MB. Un `.mov` preso dal telefono pesa 80-100 MB e rallenterebbe il sito.
+
+## Se dopo una modifica non vedi i cambiamenti
+Il browser tiene in memoria i file vecchi. Ricarica con **Cmd+Shift+R** (su Windows **Ctrl+F5**). Se non basta, in `index.html` cambia il numero dopo `?v=` nelle tre righe di `style.css`, `content.js` e `script.js`: per esempio `?v=2` diventa `?v=3`.
