@@ -369,11 +369,11 @@ const SITO = {
     progetti: [
       {
         titolo: "*Sottovoce*",
-        tipo: "Reel e video",
+        tipo: "Contenuti social",
         cliente: "Palestra di Modena",
         rubrica: "Rubrica «Chiedilo alla Ludmi»",
-        descrizione: "Reel per i social di una palestra di Modena: una rubrica in cui la trainer risponde a domande, dubbi e curiosità sull’allenamento.",
-        racconto: "Per Sottovoce ho ideato «Chiedilo alla Ludmi», una rubrica di domande, dubbi e curiosità sull’allenamento: la trainer risponde in camera, in palestra, con un linguaggio diretto. Ho curato format, grafiche in sovrimpressione e montaggio.",
+        descrizione: "Piano di contenuti per i social di una palestra di Modena: una rubrica video, caroselli educativi e caroselli motivazionali.",
+        racconto: "Per Sottovoce ho ideato tre tipi di contenuto, ognuno con un compito preciso. La rubrica video «Chiedilo alla Ludmi», in cui la trainer risponde a domande, dubbi e curiosità sull’allenamento. I caroselli educativi, che spiegano come eseguire bene un esercizio. I caroselli motivazionali, che parlano alla testa oltre che al corpo.",
         video: [
           { file: "video/social/allenamento-dopo-gravidanza.mp4", copertina: "img/social/allenamento-dopo-gravidanza.jpg", titolo: "Riprendere l’allenamento dopo la gravidanza" },
           { file: "video/social/chiedilo-alla-ludmi.mp4", copertina: "img/social/chiedilo-alla-ludmi.jpg", titolo: "Chiedilo alla Ludmi — apertura della rubrica" },
