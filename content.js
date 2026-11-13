@@ -25,14 +25,14 @@ const SITO = {
   /* ---------- DATI GENERALI ---------- */
   nome: "Giada Al Zeer",                 // compare in alto a sinistra e nel footer
   ruolo: "Graphic designer · Brand identity, packaging e contenuti social",
-  titoloPagina: "Giada Al Zeer — Graphic designer | Brand identity, packaging e social", // testo della scheda del browser
-  descrizionePagina: "Giada Al Zeer, graphic designer: brand identity, packaging, campagne e contenuti social per brand che vogliono farsi ricordare. Guarda i progetti.",
+  titoloPagina: "Giada Al Zeer — Graphic designer a Modena | Brand identity e packaging", // testo della scheda del browser
+  descrizionePagina: "Giada Al Zeer, graphic designer a Modena: brand identity, packaging, campagne e contenuti social per brand che vogliono farsi ricordare. Guarda i progetti.",
 
 
   /* ---------- HOME ---------- */
   home: {
     // Piccola riga sopra il titolo
-    etichetta: "Giada Al Zeer · Graphic designer",
+    etichetta: "Giada Al Zeer · Graphic designer a Modena",
 
     // La frase principale. Le parole tra *asterischi* diventano corsive e colorate.
     frase: "Brand identity, packaging e contenuti social che si fanno *ricordare*.",
@@ -184,7 +184,7 @@ const SITO = {
     testoAlternativo: "Foto di Giada Al Zeer",
     // Ogni frase tra virgolette è un paragrafo separato
     paragrafi: [
-      "Sono Giada Al Zeer, graphic designer. Mi occupo di brand identity e packaging design, e accompagno i brand anche dopo il logo: campagne, materiali stampati e contenuti per Instagram.",
+      "Sono Giada Al Zeer, graphic designer a Modena. Mi occupo di brand identity e packaging design, e accompagno i brand anche dopo il logo: campagne, materiali stampati e contenuti per Instagram.",
       "Parto sempre dalla storia di chi ho davanti: cosa vuole dire e a chi. Da lì costruisco un sistema visivo coerente, con colori, tipografia e illustrazioni che si riconoscono su un’etichetta come in un post.",
       "Oggi sto approfondendo social media marketing, videomaking e contenuti UGC, per dare ai brand che seguo un’immagine curata anche sui social.",
     ],
@@ -207,7 +207,7 @@ const SITO = {
   /* ---------- CONTATTI ---------- */
   contatti: {
     titolo: "Lavoriamo *insieme*?",
-    testo: "Hai un brand da far nascere, un packaging da progettare o un profilo Instagram da rinnovare? Raccontami il tuo progetto: troviamo insieme l’immagine giusta.",
+    testo: "Lavoro a Modena. Hai un brand da far nascere, un packaging da progettare o un profilo Instagram da rinnovare? Raccontami il tuo progetto: troviamo insieme l’immagine giusta.",
     email: "[INSERISCI EMAIL]",              // es. "ciao@tuonome.it"
     instagram: "[INSERISCI USERNAME]",       // solo il nome, senza @ (es. "tuonome.design")
     // Altri link facoltativi: aggiungi o togli righe
